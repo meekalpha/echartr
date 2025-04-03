@@ -12,7 +12,9 @@ HTMLWidgets.widget({
       renderValue: function(x) {
         if (!initialised) {
           initialised = true;
-          Shiny.addCustomMessageHandler("__echartr__".concat(el.id), x => update_echartr(chart, x));
+          Shiny.addCustomMessageHandler("__echartr__".concat(el.id), x => {
+            update_echartr(chart, x)
+          });
         }
         chart = echarts.init(el);
         chart.setOption(x.option);
@@ -26,9 +28,19 @@ HTMLWidgets.widget({
 });
 
 function update_echartr(chart, event) {
-  chart.setOption(event.option);
-  console.log(chart);
-  console.log(event);
+  if (event.option !== null) {
+    chart.setOption(event.option);
+  }
+  if (event.on !== null) {
+    event.on.forEach(x => {
+      chart.on(x.eventName, eval(x.handler));
+    });
+  }
+  if (event.off !== null) {
+    event.off.forEach(x => {
+      chart.off(x.eventName);
+    });
+  }
 }
 
 

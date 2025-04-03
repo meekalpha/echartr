@@ -51,10 +51,12 @@ renderEchartr <- function(expr, env = parent.frame(), quoted = FALSE) {
 updateEchartr <- function(
   session = shiny::getDefaultReactiveDomain(),
   outputId,
-  option = NULL
+  option = NULL,
+  on = NULL,
+  off = NULL
 ) {
   session$sendCustomMessage(
     sprintf("__echartr__%s", outputId),
-    list(option = option)
+    list(option = option, on = on, off = off)
   )
 }
