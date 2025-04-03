@@ -33,7 +33,12 @@ function update_echartr(chart, event) {
   }
   if (event.on !== null) {
     event.on.forEach(x => {
-      chart.on(x.eventName, eval(x.handler));
+      // TODO: More concise way?
+      if (Object.hasOwn(x, "query")) {
+        chart.on(x.eventName, x.query, eval(x.handler));
+      } else {
+        chart.on(x.eventName, eval(x.handler));
+      }
     });
   }
   if (event.off !== null) {
