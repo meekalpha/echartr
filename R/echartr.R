@@ -3,11 +3,11 @@
 #' @import htmlwidgets
 #'
 #' @export
-echartr <- function(opt = list(), elementId = NULL) {
+echartr <- function(option = list(), elementId = NULL) {
 
   # forward options using x
   x = list(
-    opt = opt
+    option = option
   )
 
   # create widget
@@ -45,4 +45,16 @@ echartrOutput <- function(outputId, width = '100%', height = '400px'){
 renderEchartr <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
   htmlwidgets::shinyRenderWidget(expr, echartrOutput, env, quoted = TRUE)
+}
+
+#' @export
+updateEchartr <- function(
+  session = shiny::getDefaultReactiveDomain(),
+  outputId,
+  option = NULL
+) {
+  session$sendCustomMessage(
+    sprintf("__echartr__%s", outputId),
+    list(option = option)
+  )
 }
