@@ -47,6 +47,7 @@ renderEchartr <- function(expr, env = parent.frame(), quoted = FALSE) {
   htmlwidgets::shinyRenderWidget(expr, echartrOutput, env, quoted = TRUE)
 }
 
+#' Intention is to support all functions under https://echarts.apache.org/en/api.html#echartsInstance
 #' @export
 updateEchartr <- function(
   session = shiny::getDefaultReactiveDomain(),
@@ -60,3 +61,5 @@ updateEchartr <- function(
     list(option = option, on = on, off = off)
   )
 }
+
+
