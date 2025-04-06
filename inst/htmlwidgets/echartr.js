@@ -11,10 +11,15 @@ HTMLWidgets.widget({
 
       renderValue: function(x) {
         if (!initialised) {
+
           initialised = true;
-          Shiny.addCustomMessageHandler("__echartr__".concat(el.id), x => {
-            update_echartr(chart, x)
-          });
+
+          if (HTMLWidgets.shinyMode) {
+            Shiny.addCustomMessageHandler("__echartr__".concat(el.id), x => {
+              update_echartr(chart, x)
+            });
+          }
+
         }
         chart = echarts.init(el);
         chart.setOption(x.option);
