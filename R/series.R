@@ -1,48 +1,64 @@
+# TODO: Don't use named values when not needed
+ec_data_ <- function(spec) {
+  if (!"value" %in% names(spec)) {
+    spec <- spec |> mutate(value = unnamed)
+  }
+  spec |> select(-unnamed) |> transpose()
+}
+
 #' Generate echarts `data` object from a dataframe
 #' @export
-e_data <- function(df, ...) {
-  args <- enexprs(...)
-  named_args <- discard_at(args, ~.x == "")
-  unnamed_args <- keep_at(args, ~.x == "")
+ec_data <- function(df, ...) {
+  ec_data_(row_eval(df, ...))
+}
 
-  if (length(unnamed_args) > 0 && "value" %in% names(named_args)) {
-    stop("Must only use one of unnamed arguments or value argument")
+#' TODO: support unnamed stuff inside row
+spec_zoom <- function(spec, col) {
+  res <- spec |> select(unnamed)
+  if (col %in% colnames(spec)) {
+    res <- res |>
+      bind_cols(
+        spec |> pull(!!sym(col)) |> map_depth(2, list) |> reduce(bind_rows)
+      )
   }
-  if (length(unnamed_args) == 0 && !"value" %in% names(named_args)) {
-    stop("Must provide dimensions as either unnamed arguments or value argument")
-  }
+  res
+}
 
-  if (length(named_args) == 0 & length(unnamed_args) > 0) {
-    zip(!!!map(unnamed_args, ~sub_values2(df = df, !!.x)))
-  } else {
-    if (length(unnamed_args) > 0) {
-      named_args$value <- expr_c(!!!unnamed_args)
-    }
-    zip(!!!sub_args(df, !!!named_args))
-  }
+ec_series_ <- function(spec) {
+  x <- spec |>
+    group_by(!!!syms(setdiff(names(spec), c("data", "unnamed"))))
+
+  data <- x |> group_split() |> map(~spec_zoom(.x, "data")) |> map(ec_data_)
+
+  x |> summarise(.groups = "drop") |> mutate(data = data) |> transpose()
 }
 
 #' Generate a list of series from a dataframe
-e_series <- function(df, ...) {
-  args <- enexprs(...)
-  named_args <- discard_at(args, ~.x == "")
-  unnamed_args <- keep_at(args, ~.x == "")
+ec_series <- function(df, ...) {
+  ec_series_(row_eval(df, ...))
+}
 
-  series_args <- named_args |> discard_at(~.x == "data")
+#' @export
+ec_line <- function(df, x, y, ...) {
+  ec_series(df, type = "line", !!enexpr(x), !!enexpr(y), ...)
+}
 
-  # Split the dataframe based on the serie-level args
-  cols <- series_args |> map(~sub_values(df, !!.x)) |> map(unlist) # TODO support list types
+#' @export
+ec_bar <- function(df, y, ...) {
+  ec_series(df, type = "bar", !!enexpr(x), !!enexpr(y), ...)
+}
 
-  df |>
-    mutate(!!!cols) |>
-    as_tibble() |>
-    group_by(!!!syms(names(cols))) |>
-    group_split() |>
-    map(function(df) {
-      serie <- names(cols) |>
-        purrr::set_names() |>
-        map(function(.x) { df[[.x]][[1]] })
-      list2(!!!serie, data = e_data(df, !!!unnamed_args)) # TODO use named_args$data
+#' @export
+ec_pie <- function(df, x, y, ...) {
+  ec_series(df, type = "pie", !!enexpr(x), !!enexpr(y), ...)
+}
 
-    })
+#' @export
+ec_scatter <- function(df, x, y, ...) {
+  ec_series(df, type = "scatter", !!enexpr(x), !!enexpr(y), ...)
+}
+
+#' @export
+ec_pie <- function(df, x, y, ...) {
+  ec_series(df, type = "pie", !!enexpr(x), !!enexpr(y), ...)
 }

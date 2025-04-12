@@ -1,23 +1,32 @@
-#' Zip multiple lists/vectors together
-#' e.g. turns 2 lists into a list of pairs or 3 lists into a list of tuples
-zip <- function(...) {
-  purrr::pmap(.l = rlang::list2(...), c)
-}
 
-#' Evaluate e once for each row in df
-sub_values <- function(df, e) {
-  e <- enexpr(e)
-  map(zip(!!!df), ~{
-    eval_tidy(e, env = list2env(as.list(.x)))
+#' Evaluate quosures provided to ... for each for in df
+row_eval <- function(df, ...) {
+  args <- rlang::enquos(...)
+
+  for (i in seq_along(args)) {
+    if (names(args)[[i]] == "") {
+      names(args)[i] <- paste0("unnamed", i)
+    }
+  }
+
+  res <- purrr::map_dfr(seq_len(nrow(df)), function(i) {
+    row <- as.list(df[i, ])
+    purrr::imap_dfc(args, function(arg, name) {
+      value <- rlang::eval_tidy(
+        rlang::get_expr(arg),
+        env = list2env(row, parent = rlang::get_env(arg))
+      )
+      tibble::tibble(
+        .name_repair = "minimal",
+        !!name := if (is.list(value)) list(value) else value
+      )
+    })
   })
-}
 
-#' Turn args into list of subbed vals
-sub_args <- function(df, ...) {
-  unname(imap(enexprs(...), ~sub_values(df, list2(!!.y := !!.x))))
-}
+  unnamed_cols <- syms(res |> select(starts_with("unnamed")) |> colnames())
 
-#' Generate an expression that concatenate expressions
-expr_c <- function(...) {
-  expr(c(!!!enexprs(...)))
+  res |>
+    rowwise() |>
+    mutate(unnamed = list(rlang::list2(!!!unnamed_cols)), .keep = "unused") |>
+    ungroup()
 }
