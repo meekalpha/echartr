@@ -23,10 +23,13 @@ row_eval <- function(df, ...) {
     })
   })
 
-  unnamed_cols <- syms(res |> select(starts_with("unnamed")) |> colnames())
+  unnamed_cols <- res |>
+    dplyr::select(starts_with("unnamed")) |>
+    colnames() |>
+    rlang::syms()
 
   res |>
-    rowwise() |>
-    mutate(unnamed = list(rlang::list2(!!!unnamed_cols)), .keep = "unused") |>
-    ungroup()
+    dplyr::rowwise() |>
+    dplyr::mutate(unnamed = list(rlang::list2(!!!unnamed_cols)), .keep = "unused") |>
+    dplyr::ungroup()
 }

@@ -4,7 +4,9 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of echartr is to provide an R interface to Apache Echarts
+The goal of echartr is to provide an R interface to Apache Echarts that matches the Javascript API as closely as possible.
+
+echartr makes it easier to use the more advanced features of Echarts, since you can refer to the official Apache Echarts documentation (https://echarts.apache.org/en/option.html)
 
 
 ## Installation
@@ -12,15 +14,6 @@ The goal of echartr is to provide an R interface to Apache Echarts
 You can install the development version of echartr like so:
 
 ``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+# install.packages("remotes")
+remotes::install_github("meekalpha/echartr")
 ```
-
-## Example
-
-This is a basic example which shows you how to solve a common problem:
-
-``` r
-library(echartr)
-## basic example code
-```
-

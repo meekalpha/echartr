@@ -1,11 +1,20 @@
 
 ec_options_ <- function(spec) {
+
+  option_cols <- setdiff(names(spec), c("series", "unnamed"))
+
   x <- spec |>
-    group_by(!!!syms(setdiff(names(spec), c("series", "unnamed"))))
+    dplyr::group_by(!!!rlang::syms(option_cols))
 
-  series <- x |> group_split() |> map(~spec_zoom(.x, "series")) |> map(ec_series_)
+  series <- x |>
+    dplyr::group_split() |>
+    purrr::map(~spec_zoom(.x, "series")) |>
+    purrr::map(ec_series_)
 
-  x |> summarise(.groups = "drop") |> mutate(series = series) |> transpose()
+  x |>
+    dplyr::summarise(.groups = "drop") |>
+    dplyr::mutate(series = series) |>
+    purrr::transpose()
 }
 
 #' @export
