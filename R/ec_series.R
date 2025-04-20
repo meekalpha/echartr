@@ -22,7 +22,7 @@ ec_series_ <- function(spec) {
 #' Generate a list of series from a dataframe
 #' @export
 ec_series <- function(df, ...) {
-  ec_series_(build_spec(df, ...))
+  structure(ec_series_(build_spec(df, ...)), class = "ec_object")
 }
 
 #' @export

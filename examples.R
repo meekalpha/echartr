@@ -70,8 +70,7 @@ echartr(option = list(
   yAxis = list(type = "value"),
   legend = list(show = TRUE),
   series = ec_series(
-    iris,
-    data = list(value = c(Petal.Width, Petal.Length)),
+    iris, Petal.Width, Petal.Length,
     type = "scatter",
     color = dplyr::case_when(
       Species == "setosa" ~ "red",
@@ -89,8 +88,7 @@ echartr(option = list(
   yAxis = list(type = "value"),
   legend = list(show = TRUE),
   series = ec_series(
-    iris,
-    data = list(value = c(Petal.Width, Petal.Length)),
+    iris, Petal.Width, Petal.Length,
     type = "scatter",
     color = dplyr::case_when(
       Species == "setosa" ~ "red",
@@ -243,6 +241,46 @@ echartr(option = list(
       name = as.character(Species),
       xAxisIndex = 1, yAxisIndex = 1,
       type = "scatter",
+    )
+  )
+))
+
+# -----------------------------------------
+# Timelined grid
+
+echartr(option = list(
+  baseOption = list(
+    xAxis = list(
+      list(type = "value", gridIndex = 0),
+      list(type = "value", gridIndex = 1)
+    ),
+    yAxis = list(
+      list(type = "value", gridIndex = 0),
+      list(type = "value", gridIndex = 1)
+    ),
+    grid = list(
+      list(top = "10%", height = "30%"),
+      list(top = "60%", height = "30%")
+    ),
+    title = list(
+      list(text = "Petals"),
+      list(text = "Sepals", top = "50%")
+    ),
+    legend = list(show = TRUE)
+  ),
+  options =
+  series = c(
+    ec_series(iris,
+              Petal.Width, Petal.Length,
+              name = as.character(Species),
+              xAxisIndex = 0, yAxisIndex = 0,
+              type = "scatter",
+    ),
+    ec_series(iris,
+              Sepal.Width, Sepal.Length,
+              name = as.character(Species),
+              xAxisIndex = 1, yAxisIndex = 1,
+              type = "scatter",
     )
   )
 ))

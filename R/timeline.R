@@ -19,5 +19,5 @@ ec_options_ <- function(spec) {
 
 #' @export
 ec_options <- function(df, ...) {
-  ec_options_(build_spec(df, ...))
+  structure(ec_options_(build_spec(df, ...)), class = "ec_object")
 }
