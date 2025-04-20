@@ -1,8 +1,8 @@
 #' Move one level 'deeper' into the specification
-#' TODO: support unnamed stuff inside row
+#' TODO: support unnamed stuff inside row (maybe)
 spec_zoom <- function(spec, col) {
   res <- spec |>
-    dplyr::select(unnamed)
+    dplyr::select(datapoint)
 
   if (col %in% colnames(spec)) {
     res <- spec |>
@@ -17,7 +17,7 @@ spec_zoom <- function(spec, col) {
 #' Create a list of series based on spec data frame
 ec_series_ <- function(spec) {
 
-  serie_cols <- setdiff(names(spec), c("data", "unnamed"))
+  serie_cols <- setdiff(names(spec), c("data", "datapoint"))
 
   x <- spec |>
     dplyr::group_by(!!!rlang::syms(serie_cols))
@@ -37,7 +37,7 @@ ec_series_ <- function(spec) {
 
 #' Generate a list of series from a dataframe
 ec_series <- function(df, ...) {
-  ec_series_(row_eval(df, ...))
+  ec_series_(build_spec(df, ...))
 }
 
 #' @export

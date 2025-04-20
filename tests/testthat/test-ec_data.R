@@ -82,7 +82,7 @@ test_that("Data can have styling", {
 test_that("No datapoints or attributes gives empty list", {
   data <- tibble::tibble()
   expect_identical(
-    ec_data(data),
+    suppressWarnings(ec_data(data)),
     list()
   )
 })
@@ -90,7 +90,7 @@ test_that("No datapoints or attributes gives empty list", {
 test_that("Attributes without datapoints gives empty value field", {
   data <- tibble::tibble(name = letters[1:5])
   expect_identical(
-    ec_data(data, name = name),
+    suppressWarnings(ec_data(data, name = name)),
     list(
       list(name = "a", value = list()),
       list(name = "b", value = list()),

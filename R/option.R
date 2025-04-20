@@ -32,8 +32,8 @@ ec_as_js <- function(option) {
     ),
     ";"
   ) |>
-    str_remove_all("\"!!JS_EVAL!!") |>
-    str_remove_all("!!JS_EVAL!!\"")
+    stringr::str_remove_all("\"!!JS_EVAL!!") |>
+    stringr::str_remove_all("!!JS_EVAL!!\"")
 }
 
 #' Print the javascript representation of chart options

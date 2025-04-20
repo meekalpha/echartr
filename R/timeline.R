@@ -1,7 +1,7 @@
 
 ec_options_ <- function(spec) {
 
-  option_cols <- setdiff(names(spec), c("series", "unnamed"))
+  option_cols <- setdiff(names(spec), c("series", "datapoint"))
 
   x <- spec |>
     dplyr::group_by(!!!rlang::syms(option_cols))
@@ -19,5 +19,5 @@ ec_options_ <- function(spec) {
 
 #' @export
 ec_options <- function(df, ...) {
-  ec_options_(row_eval(df, ...))
+  ec_options_(build_spec(df, ...))
 }

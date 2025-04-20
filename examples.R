@@ -14,6 +14,15 @@ echartr(option = list(
   )
 ))
 
+option = list(
+  xAxis = list(type = "value"),
+  yAxis = list(type = "value"),
+  series = ec_scatter(iris,
+                      Sepal.Width, Sepal.Length,
+                      name = as.character(Species)
+  )
+)
+
 echartr(option = new_option(
   xAxis = list(type = "value"),
   yAxis = list(type = "value"),
@@ -24,6 +33,9 @@ echartr(option = new_option(
     name = as.character(Species)
   )
 ))
+
+
+
 
 new_option(
   xAxis = list(type = "value"),
