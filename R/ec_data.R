@@ -18,14 +18,17 @@ ec_data_ <- function(spec) {
   }
 
   # Convert data to a vector where one dimension of single type
-  simple_data <- spec$unnamed |> purrr::every(~!is.list(.x) && length(.x) == 1)
+  simple_data <- length(spec$unnamed) > 0 &&
+    purrr::every(spec$unnamed, ~!is.list(.x) && length(.x) == 1)
 
   if (simple_data) {
     spec$unnamed <- unlist(spec$unnamed)
   }
 
-  # Handle simple cases - data without additional attributes
-  if (ncol(spec) == 1) {
+  if (length(spec$unnamed) == 0) {
+    spec$unnamed
+  }
+  else if (ncol(spec) == 1) {
     if (length(spec$unnamed[[1]]) == 1) {
       unlist(spec$unnamed)
     } else {
