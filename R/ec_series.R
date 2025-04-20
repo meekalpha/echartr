@@ -1,19 +1,3 @@
-#' Move one level 'deeper' into the specification
-#' TODO: support unnamed stuff inside row (maybe)
-spec_zoom <- function(spec, col) {
-  res <- spec |>
-    dplyr::select(datapoint)
-
-  if (col %in% colnames(spec)) {
-    res <- spec |>
-      dplyr::pull(!!rlang::sym(col)) |>
-      purrr::map_depth(2, list) |>
-      purrr::reduce(dplyr::bind_rows) |>
-      dplyr::bind_cols(res)
-  }
-  res
-}
-
 #' Create a list of series based on spec data frame
 ec_series_ <- function(spec) {
 
@@ -36,6 +20,7 @@ ec_series_ <- function(spec) {
 }
 
 #' Generate a list of series from a dataframe
+#' @export
 ec_series <- function(df, ...) {
   ec_series_(build_spec(df, ...))
 }

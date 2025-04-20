@@ -1,3 +1,20 @@
+#' Move one level 'deeper' into the specification
+#' TODO: support unnamed stuff inside row (maybe)
+spec_zoom <- function(spec, col) {
+  res <- spec |>
+    dplyr::select(datapoint)
+
+  if (col %in% colnames(spec)) {
+    res <- spec |>
+      dplyr::pull(!!rlang::sym(col)) |>
+      purrr::map_depth(2, list) |>
+      purrr::reduce(dplyr::bind_rows) |>
+      dplyr::bind_cols(res)
+  }
+  res
+}
+
+#' Convert function args to a dataframe
 build_spec <- function(...) {
 
   spec <- row_eval(...) |>
