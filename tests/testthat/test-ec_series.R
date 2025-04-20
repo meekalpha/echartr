@@ -1,6 +1,3 @@
-test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
-})
 
 test_that("No attributes gives a single series", {
   data <- tibble::tibble(x = 1:50)
@@ -21,7 +18,6 @@ test_that("Attributes with a single value give a single series", {
     )
   )
 })
-
 
 test_that("Attributes with a multiple values give multiple series", {
   data <- tibble::tibble(x = 1:50, name = rep(c("Series 1", "Series 2"), 25))
