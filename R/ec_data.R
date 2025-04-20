@@ -27,16 +27,16 @@ ec_data_ <- function(spec) {
   # Handle simple cases - data without additional attributes
   if (ncol(spec) == 1) {
     if (length(spec$unnamed[[1]]) == 1) {
-      return(unlist(spec$unnamed))
+      unlist(spec$unnamed)
     } else {
-      return(spec$unnamed)
+      spec$unnamed
     }
+  } else {
+    spec |>
+      dplyr::mutate(value = unnamed) |>
+      dplyr::select(-unnamed) |>
+      purrr::transpose()
   }
-
-  spec |>
-    dplyr::mutate(value = unnamed) |>
-    dplyr::select(-unnamed) |>
-    purrr::transpose()
 }
 
 #' Generate echarts `data` object from a dataframe
