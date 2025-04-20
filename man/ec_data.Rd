@@ -2,10 +2,13 @@
 % Please edit documentation in R/ec_data.R
 \name{ec_data}
 \alias{ec_data}
-\title{Generate echarts \code{data} object from a dataframe}
+\title{Generate echarts \code{data} list-tree object from a dataframe}
 \usage{
 ec_data(df, ...)
 }
+\arguments{
+\item{...}{Expressions that can be evaluated to generate the list-tree}
+}
 \description{
-Generate echarts \code{data} object from a dataframe
+Generate echarts \code{data} list-tree object from a dataframe
 }

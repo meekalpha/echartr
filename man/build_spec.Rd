@@ -6,6 +6,10 @@
 \usage{
 build_spec(...)
 }
+\arguments{
+\item{...}{A combination of named arguments, which will each become a column,
+and unnamed arguments, which will be combined into a column called \code{datapoint}}
+}
 \description{
 Convert function args to a dataframe
 }

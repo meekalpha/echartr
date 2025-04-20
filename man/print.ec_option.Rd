@@ -2,10 +2,10 @@
 % Please edit documentation in R/print.R
 \name{print.ec_option}
 \alias{print.ec_option}
-\title{Print the javascript representation of chart options}
+\title{Print the javascript representation of an echartr list-tree object}
 \usage{
 \method{print}{ec_option}(x)
 }
 \description{
-Print the javascript representation of chart options
+Print the javascript representation of an echartr list-tree object
 }

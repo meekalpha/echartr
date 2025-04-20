@@ -6,6 +6,9 @@
 \usage{
 \method{ec_as_js}{ec_object}(x)
 }
+\arguments{
+\item{x}{echartr list-tree}
+}
 \description{
 TODO: Handle Javascript better than this
 }

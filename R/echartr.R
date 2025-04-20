@@ -47,6 +47,17 @@ renderEchartr <- function(expr, env = parent.frame(), quoted = FALSE) {
   htmlwidgets::shinyRenderWidget(expr, echartrOutput, env, quoted = TRUE)
 }
 
+#' Update an echartr instance
+#'
+#' @description
+#' `updateEchartr()` updates an echartr instance within a Shiny application.
+#'
+#' @param session The Shiny session object. Defaults to the current Shiny session.
+#' @param outputId The Shiny output ID of the `echartr` instance.
+#' @param option list-tree representation of echart option argument, see https://echarts.apache.org/en/option.html
+#' @param on list of event listeners to register, see https://echarts.apache.org/en/api.html#echartsInstance.on
+#' @param off list of event listeners to de-register, see https://echarts.apache.org/en/api.html#echartsInstance.off
+#'
 #' Intention is to support all functions under https://echarts.apache.org/en/api.html#echartsInstance
 #' @export
 updateEchartr <- function(

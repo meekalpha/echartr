@@ -15,6 +15,8 @@ spec_zoom <- function(spec, col) {
 }
 
 #' Convert function args to a dataframe
+#' @param ... A combination of named arguments, which will each become a column,
+#'            and unnamed arguments, which will be combined into a column called `datapoint`
 build_spec <- function(...) {
 
   spec <- row_eval(...) |>

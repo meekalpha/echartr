@@ -4,7 +4,10 @@
 \alias{ec_clip.ec_object}
 \title{Copy the javascript representation of chart options}
 \usage{
-\method{ec_clip}{ec_object}(option)
+\method{ec_clip}{ec_object}(x)
+}
+\arguments{
+\item{x}{echartr list-tree}
 }
 \description{
 Copy the javascript representation of chart options

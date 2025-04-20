@@ -2,7 +2,7 @@
 % Please edit documentation in R/echartr.R
 \name{updateEchartr}
 \alias{updateEchartr}
-\title{Intention is to support all functions under https://echarts.apache.org/en/api.html#echartsInstance}
+\title{Update an echartr instance}
 \usage{
 updateEchartr(
   session = shiny::getDefaultReactiveDomain(),
@@ -12,6 +12,19 @@ updateEchartr(
   off = NULL
 )
 }
+\arguments{
+\item{session}{The Shiny session object. Defaults to the current Shiny session.}
+
+\item{outputId}{The Shiny output ID of the \code{echartr} instance.}
+
+\item{option}{list-tree representation of echart option argument, see https://echarts.apache.org/en/option.html}
+
+\item{on}{list of event listeners to register, see https://echarts.apache.org/en/api.html#echartsInstance.on}
+
+\item{off}{list of event listeners to de-register, see https://echarts.apache.org/en/api.html#echartsInstance.off
+
+Intention is to support all functions under https://echarts.apache.org/en/api.html#echartsInstance}
+}
 \description{
-Intention is to support all functions under https://echarts.apache.org/en/api.html#echartsInstance
+\code{updateEchartr()} updates an echartr instance within a Shiny application.
 }
