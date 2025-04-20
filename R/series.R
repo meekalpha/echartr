@@ -1,23 +1,3 @@
-# TODO: Don't use named values when not needed
-ec_data_ <- function(spec) {
-  if (ncol(spec) == 1) {
-    return(spec$unnamed)
-  }
-  if (!"value" %in% names(spec)) {
-    spec <- spec |>
-      dplyr::mutate(value = unnamed)
-  }
-  spec |>
-    dplyr::select(-unnamed) |>
-    purrr::transpose()
-}
-
-#' Generate echarts `data` object from a dataframe
-#' @export
-ec_data <- function(df, ...) {
-  ec_data_(row_eval(df, ...))
-}
-
 #' Move one level 'deeper' into the specification
 #' TODO: support unnamed stuff inside row
 spec_zoom <- function(spec, col) {

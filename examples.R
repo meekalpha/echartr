@@ -14,12 +14,13 @@ echartr(option = list(
   )
 ))
 
-echartr(option = list(
+echartr(option = new_option(
   xAxis = list(type = "value"),
   yAxis = list(type = "value"),
   series = ec_scatter(iris,
-    Sepal.Width, Sepal.Length,
-    symbol = case_when(Species == "setosa" ~ "diamond", TRUE ~ "circle"),
+    Sepal.Width, Sepal.Length, Species,
+    symbol = if (Species == "setosa") "diamond" else "circle",
+    symbolSize = if (Species == "setosa") 10 else 5,
     name = as.character(Species)
   )
 ))
@@ -97,8 +98,8 @@ df <- tibble::as_tibble(iris) |>
 
 option <- new_option(
   baseOption = list(
-    xAxis = list(type = "value", min = 0, max = 3),
-    yAxis = list(type = "value", min = 0, max = 7)
+    xAxis = list(type = "value"),
+    yAxis = list(type = "value")
   ),
   timeline = list(
     axisType = "category",
@@ -106,9 +107,18 @@ option <- new_option(
   ),
   options = ec_options(
     df, Sepal.Length, Sepal.Width, name = Species,
-    series = list(type = "scatter", name = Species)
+    series = list(type = "scatter", name = Species),
   )
 )
+
+ec_clip_js(option)
+echartr(option)
+
+library(echarts4r)
+iris |>
+  group_by(Species) |>
+  e_chart(Sepal.Length, timeline = TRUE) |>
+  e_scatter(Sepal.Width)
 
 ec_options(
   df, Sepal.Length, Sepal.Width,
@@ -116,9 +126,6 @@ ec_options(
   series = list(type = "scatter")
 )
 
-ec_clip_js(option)
-
-echartr(option)
 
 #-------------------------
 # Stacked bar
@@ -139,6 +146,11 @@ echartr(option = list(
     name = groups
   )
 ))
+
+df |>
+  group_by(groups) |>
+  e_chart(dates) |>
+  e_bar(value, stack = "stack")
 
 #-----------------------------
 # Timelined bar
