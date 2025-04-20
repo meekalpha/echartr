@@ -2,10 +2,10 @@
 % Please edit documentation in R/print.R
 \name{ec_as_js.ec_object}
 \alias{ec_as_js.ec_object}
-\title{TODO: Handle Javascript properly so it's not a string in the final result}
+\title{TODO: Handle Javascript better than this}
 \usage{
 \method{ec_as_js}{ec_object}(x)
 }
 \description{
-TODO: Handle Javascript properly so it's not a string in the final result
+TODO: Handle Javascript better than this
 }

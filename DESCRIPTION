@@ -11,9 +11,12 @@ RoxygenNote: 7.3.2
 Imports: 
     dplyr,
     htmlwidgets,
+    jsonlite,
     purrr,
     rlang,
-    shiny
+    shiny,
+    stringr,
+    tibble
 Suggests: 
     clipr,
     testthat (>= 3.0.0)
