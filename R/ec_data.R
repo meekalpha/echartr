@@ -1,4 +1,4 @@
-# TODO: Don't use named values when not needed
+
 ec_data_ <- function(spec) {
 
   if ("value" %in% colnames(spec)) {
