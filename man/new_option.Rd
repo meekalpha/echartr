@@ -4,7 +4,7 @@
 \alias{new_option}
 \title{Create a new echartr 'option' object}
 \usage{
-new_option(option = list())
+new_option(...)
 }
 \description{
 Create a new echartr 'option' object

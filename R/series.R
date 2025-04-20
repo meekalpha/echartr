@@ -59,8 +59,3 @@ ec_pie <- function(df, x, y, ...) {
 ec_scatter <- function(df, x, y, ...) {
   ec_series(df, type = "scatter", !!rlang::enexpr(x), !!rlang::enexpr(y), ...)
 }
-
-#' @export
-ec_pie <- function(df, x, y, ...) {
-  ec_series(df, type = "pie", !!rlang::enexpr(x), !!rlang::enexpr(y), ...)
-}
