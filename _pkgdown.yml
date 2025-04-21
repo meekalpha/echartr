@@ -1,4 +1,22 @@
 url: https://meekalpha.github.io/echartr/
 template:
   bootstrap: 5
+reference:
+  - title: Series
+    contents:
+      - ec_series
 
+  - subtitle: Chart types
+    contents:
+      - ec_bar
+      - ec_scatter
+      - ec_pie
+      - ec_line
+
+  - title: Data
+    contents:
+      - ec_data
+
+  - title: Timeline
+    contents:
+      - ec_options
