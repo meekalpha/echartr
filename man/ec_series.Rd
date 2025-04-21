@@ -4,8 +4,17 @@
 \alias{ec_series}
 \title{Generate a list of series from a dataframe}
 \usage{
-ec_series(df, ...)
+ec_series(df, ..., type)
 }
 \description{
 Generate a list of series from a dataframe
+}
+\seealso{
+\code{\link[=ec_scatter]{ec_scatter()}}
+
+\code{\link[=ec_line]{ec_line()}}
+
+\code{\link[=ec_bar]{ec_bar()}}
+
+\code{\link[=ec_pie]{ec_pie()}}
 }

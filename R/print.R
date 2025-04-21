@@ -28,6 +28,7 @@ ec_as_js.ec_object <- function(x) {
           unclass(x)
         }
       },
+      post = unclass,
       is_node = is.list
     )
 
@@ -57,12 +58,5 @@ ec_clip.ec_object <- function(x) {
 #' @exportS3Method
 print.ec_object <- function(x) {
   cat(ec_as_js(x))
-  x
-}
-
-#' Print the javascript representation of an echartr list-tree object
-#' @export
-print.ec_option <- function(x) {
-  cat(paste("option = ", ec_as_js(x), ";"))
   x
 }
