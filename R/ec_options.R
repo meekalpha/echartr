@@ -3,17 +3,23 @@ ec_options_ <- function(spec) {
 
   option_cols <- setdiff(names(spec), c("series", "datapoint"))
 
-  x <- spec |>
-    dplyr::group_by(!!!rlang::syms(option_cols))
-
-  series <- x |>
+  # Summarise to one row per series
+  series <- spec |>
+    dplyr::group_by(!!!rlang::syms(option_cols)) |>
     dplyr::group_split() |>
-    purrr::map(~spec_zoom(.x, "series")) |>
-    purrr::map(ec_series_)
+    purrr::map(~{
+      .x |>
+        dplyr::summarise(
+          .by = all_of(option_cols),
+          series = list(.x |> spec_zoom("series") |> ec_series_())
+        )
+    }) |>
+    dplyr::bind_rows()
 
-  x |>
-    dplyr::summarise(.groups = "drop") |>
-    dplyr::mutate(series = series) |>
+  # Avoid any reordering of grouping columns
+  spec |>
+    dplyr::summarise(.by = all_of(option_cols)) |> # Using .by avoids re-ordering
+    dplyr::left_join(series, by = option_cols) |>
     purrr::transpose()
 }
 

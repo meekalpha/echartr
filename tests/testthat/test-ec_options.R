@@ -1,6 +1,3 @@
-test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
-})
 
 test_that("No attributes gives a single option", {
   data <- tibble::tibble(x = 1:50)
@@ -17,9 +14,9 @@ test_that("No attributes gives a single option", {
 test_that("Attributes with a single value give a single option", {
   data <- tibble::tibble(x = 1:50, name = "My option")
   expect_identical(
-    unclass(ec_series(data, x, name = name)),
+    unclass(ec_options(data, x, name = name)),
     list(
-      list(name = "My option", data = data$x)
+      list(name = "My option", series = list(list(data = data$x)))
     )
   )
 })
