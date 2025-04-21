@@ -74,6 +74,8 @@ ec_line <- function(df, x, y, ...) {
 
 #' Bar series
 #'
+#' https://echarts.apache.org/en/option.html#series-bar
+#'
 #' @examples
 #'
 #' # Including x-value in series data
@@ -112,6 +114,8 @@ ec_bar <- function(df, x, y, ...) {
 
 #' Pie series
 #'
+#' https://echarts.apache.org/en/option.html#series-pie
+#'
 #' @examples
 #'
 #' data <- tibble::tibble(name = LETTERS[1:5], value = rnorm(5))
@@ -135,36 +139,14 @@ ec_pie <- function(df, value, ...) {
 #'
 #' https://echarts.apache.org/en/option.html#series-scatter
 #'
-#' @examples
-#'
-#' # Basic unnamed series
-#' data <- tibble::tibble(x = rnorm(100), y = rnorm(100))
-#' ec_scatter(data, x, y)
-#'
-#' # Multiple series
-#' data <- tibble::tibble(
-#'   x = rnorm(100),
-#'   y = rnorm(100),
-#'   serie = sample(letters[1:3], 100, replace = TRUE)
-#' )
-#' ec_scatter(data, x, y, name = serie)
-#'
-#' # Display series in a plot
-#' data <- tibble::tibble(
-#'   x = rnorm(100),
-#'   y = rnorm(100),
-#'   serie = sample(letters[1:3], 100, replace = TRUE)
-#' )
-#' series <- ec_scatter(data, x, y, name = serie)
-#'
-#' echartr(option = list(
-#'   xAxis = list(type = "value"),
-#'   yAxis = list(type = "value"),
-#'   legend = list(show = TRUE),
-#'   series = series
-#' ))
-#'
 #' @export
 ec_scatter <- function(df, x, y, ...) {
-  ec_series(df, type = "scatter", !!rlang::enexpr(x), !!rlang::enexpr(y), ...)
+  if (missing(y)) {
+    stop("`y` argument is required")
+  }
+  if (missing(x)) {
+    ec_series(df, type = "scatter", !!rlang::enexpr(y), ...)
+  } else {
+    ec_series(df, type = "scatter", !!rlang::enexpr(x), !!rlang::enexpr(y), ...)
+  }
 }

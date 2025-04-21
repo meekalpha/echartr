@@ -12,33 +12,3 @@ Generates a single scatter series or list of series from a dataframe.
 \details{
 https://echarts.apache.org/en/option.html#series-scatter
 }
-\examples{
-
-# Basic unnamed series
-data <- tibble::tibble(x = rnorm(100), y = rnorm(100))
-ec_scatter(data, x, y)
-
-# Multiple series
-data <- tibble::tibble(
-  x = rnorm(100),
-  y = rnorm(100),
-  serie = sample(letters[1:3], 100, replace = TRUE)
-)
-ec_scatter(data, x, y, name = serie)
-
-# Display series in a plot
-data <- tibble::tibble(
-  x = rnorm(100),
-  y = rnorm(100),
-  serie = sample(letters[1:3], 100, replace = TRUE)
-)
-series <- ec_scatter(data, x, y, name = serie)
-
-echartr(option = list(
-  xAxis = list(type = "value"),
-  yAxis = list(type = "value"),
-  legend = list(show = TRUE),
-  series = series
-))
-
-}

@@ -7,7 +7,7 @@
 ec_bar(df, x, y, ...)
 }
 \description{
-Bar series
+https://echarts.apache.org/en/option.html#series-bar
 }
 \examples{
 

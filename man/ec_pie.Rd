@@ -7,14 +7,13 @@
 ec_pie(df, value, ...)
 }
 \description{
-Pie series
+https://echarts.apache.org/en/option.html#series-pie
 }
 \examples{
 
 data <- tibble::tibble(name = LETTERS[1:5], value = rnorm(5))
 series <- ec_pie(data, value, data = list(name = name))
 
-# Display series in a plot
 echartr(option = list(
   series = series
 ))
