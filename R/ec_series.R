@@ -6,16 +6,23 @@ ec_series_ <- function(spec) {
   x <- spec |>
     dplyr::group_by(!!!rlang::syms(serie_cols))
 
-  # Split data based on series
-  data <- x |>
+  # Summarise to one row per series
+  series <- spec |>
+    dplyr::group_by(!!!rlang::syms(serie_cols)) |>
     dplyr::group_split() |>
-    purrr::map(~spec_zoom(.x, "data")) |>
-    purrr::map(ec_data_)
+    purrr::map(~{
+      .x |>
+        dplyr::summarise(
+          .by = all_of(serie_cols),
+          data = list(.x |> spec_zoom("data") |> ec_data_())
+        )
+    }) |>
+    dplyr::bind_rows()
 
-  # Join series + data
-  x |>
-    dplyr::summarise(.groups = "drop") |>
-    dplyr::mutate(data = data) |>
+  # Avoid any reordering of grouping columns
+  spec |>
+    dplyr::summarise(.by = all_of(serie_cols)) |> # Using .by avoids re-ordering
+    dplyr::left_join(series, by = serie_cols) |>
     purrr::transpose()
 }
 
@@ -31,7 +38,7 @@ ec_series <- function(df, ..., type) {
   if (missing(type)) {
     stop("`type` argument is required")
   }
-  structure(ec_series_(build_spec(df, ...)), class = "ec_object")
+  structure(ec_series_(build_spec(df, type = type, ...)), class = "ec_object")
 }
 
 #' Line series
