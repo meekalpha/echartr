@@ -12,3 +12,293 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(echartr)
 ```
+
+# Line
+
+## Basic Line Chart 
+
+https://echarts.apache.org/examples/en/editor.html?c=line-simple
+
+```{r}
+data <- tibble::tibble(
+  x = c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"),
+  y = c(150, 230, 224, 218, 135, 147, 260)
+)
+
+echartr(option = list(
+  xAxis = list(type = "category", data = data$x),
+  yAxis = list(type = "value"),
+  series = ec_line(data, y = y)
+))
+```
+
+## Smoothed line chart
+
+https://echarts.apache.org/examples/en/editor.html?c=line-smooth
+
+```{r}
+data <- tibble::tibble(
+  x = c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"),
+  y = c(820, 932, 901, 934, 1290, 1330, 1320)
+)
+
+echartr(option = list(
+  xAxis = list(type = "category", data = data$x),
+  yAxis = list(type = "value"),
+  series = ec_line(data, y = y, smooth = TRUE)
+))
+```
+## Basic area chart
+
+https://echarts.apache.org/examples/en/editor.html?c=area-basic
+
+```{r}
+data <- tibble::tibble(
+  x = c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"),
+  y = c(820, 932, 901, 934, 1290, 1330, 1320)
+)
+
+echartr(option = list(
+  xAxis = list(
+    type = "category", 
+    boundaryGap = FALSE, 
+    data = data$x
+  ),
+  yAxis = list(type = "value"),
+  series = ec_line(data, y = y, areaStyle = list())
+))
+```
+
+## Stacked Line Chart
+
+https://echarts.apache.org/examples/en/editor.html?c=line-stack
+
+```{r}
+data <- tibble::tibble(
+  Day = c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"),
+  Email = c(120, 132, 101, 134, 90, 230, 210),
+  `Union Ads` = c(220, 182, 191, 234, 290, 330, 310),
+  `Video Ads` = c(150, 232, 201, 154, 190, 330, 410),
+  `Direct` = c(320, 332, 301, 334, 390, 330, 320),
+  `Search Engine` = c(820, 932, 901, 934, 1290, 1330, 1320),
+) 
+
+# Convert wide data to tidy data (https://r4ds.had.co.nz/tidy-data.html)
+data <- data |>
+  tidyr::pivot_longer(Email:`Search Engine`)
+
+echartr(option = list(
+  title = list(text = "Stacked Line"),
+  tooltip = list(trigger = "axis"),
+  legend = list(data = unique(data$name)),
+  grid = list(left = "3%", right = "4%", bottom = "3%", containLabel = TRUE),
+  toolbox = list(
+    feature = list(saveAsImage = list())
+  ),
+  xAxis = list(
+    type = "category", 
+    boundaryGap = FALSE,
+    data = unique(data$Day)
+  ),
+  yAxis = list(type = "value"),
+  series = ec_line(
+    data, 
+    y = value, 
+    name = name,
+    stack = "Total"
+  )
+))
+```
+## Stacked Area Chart
+
+https://echarts.apache.org/examples/en/editor.html?c=area-stack
+
+```{r}
+data <- tibble::tibble(
+  Day = c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"),
+  Email = c(120, 132, 101, 134, 90, 230, 210),
+  `Union Ads` = c(220, 182, 191, 234, 290, 330, 310),
+  `Video Ads` = c(150, 232, 201, 154, 190, 330, 410),
+  `Direct` = c(320, 332, 301, 334, 390, 330, 320),
+  `Search Engine` = c(820, 932, 901, 934, 1290, 1330, 1320),
+) 
+
+# Convert wide data to tidy data (https://r4ds.had.co.nz/tidy-data.html)
+data <- data |>
+  tidyr::pivot_longer(Email:`Search Engine`)
+
+echartr(option = list(
+  title = list(text = "Stacked Area Chart"),
+  tooltip = list(
+    trigger = "axis",
+    axisPointer = list(
+      type = "cross",
+      label = list(
+        backgroundColor = "#6a7985"
+      )
+    )
+  ),
+  legend = list(data = unique(data$name)),
+  toolbox = list(
+    feature = list(saveAsImage = list())
+  ),
+  grid = list(left = "3%", right = "4%", bottom = "3%", containLabel = TRUE),
+  xAxis = list(
+    type = "category", 
+    boundaryGap = FALSE,
+    data = unique(data$Day)
+  ),
+  yAxis = list(type = "value"),
+  series = ec_line(
+    data, 
+    y = value, 
+    name = name,
+    areaStyle = list(),
+    emphasis = list(focus = "series"),
+    stack = "Total",
+    label = if (name == "Search Engine") list(show = TRUE, position = "top") else list()
+  )
+))
+```
+# Bar
+
+## Basic Bar
+
+https://echarts.apache.org/examples/en/editor.html?c=bar-simple
+
+```{r}
+data <- tibble::tibble(
+  x = c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"),
+  y = c(120, 200, 150, 80, 70, 110, 130)
+)
+echartr(option = list(
+  xAxis = list(type = "category", data = data$x),
+  yAxis = list(type = "value"),
+  series = ec_bar(data, y = y)
+))
+```
+
+## Axis Align with Tick
+
+https://echarts.apache.org/examples/en/editor.html?c=bar-tick-align
+
+
+```{r}
+data <- tibble::tibble(
+  x = c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"),
+  y = c(10, 52, 200, 334, 390, 330, 220)
+)
+
+echartr(option = list(
+  tooltip = list(
+    trigger = "axis",
+    axisPointer = list(
+      type = "shadow"
+    )
+  ),
+  grid = list(
+    left = "3%",
+    right = "4%",
+    bottom = "3%",
+    containLabel = TRUE
+  ),
+  xAxis = list(
+    type = "category", 
+    data = data$x, 
+    axisTick = list(
+      alignWithLabel = TRUE
+    )
+  ),
+  yAxis = list(type = "value"),
+  series = ec_bar(data, y = y, name = "Direct", barWidth = "60%"),
+  axisPointer = list(
+    type = "shadow"
+  )
+))
+```
+
+## Bar with Background
+
+https://echarts.apache.org/examples/en/editor.html?c=bar-background
+
+```{r}
+data <- tibble::tibble(
+  x = c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"),
+  y = c(120, 200, 150, 80, 70, 110, 130)
+)
+
+echartr(option = list(
+  xAxis = list(
+    type = "category", data = data$x
+  ),
+  yAxis = list(type = "value"),
+  series = ec_bar(data, y = y, showBackground = TRUE, backgroundStyle = list(
+    color = "rgba(220, 220, 220, 0.8)" # TODO: Handle grDevices::rgb
+  ))
+))
+```
+
+## Bar Label Rotation
+
+https://echarts.apache.org/examples/en/editor.html?c=bar-label-rotation
+
+```{r}
+label_option <- list(
+  show = TRUE,
+  formatter = "{c}  {name|{a}}",
+  rich = "name: {}",
+  rotate = 90, # 0 - 90
+  align = "left", # "left", "right", "center"
+  verticalAlign = "middle", # "top", "middle", "bottom"
+  position = "insideBottom", # "inside", "insideTop", "insideBottom", "insideLeft", 
+                             # "insideRight", "insideTopLeft", "insideTopRight", 
+                             # "insideBottomLeft", "insideBottomRight"
+                             # "outside", "outsideTop", "outsideBottom", "outsideLeft",
+  distance = 15
+)
+
+data <- tibble::tibble(
+  year = c("2012", "2013", "2014", "2015", "2016"),
+  Forest = c(320, 332, 301, 334, 390),
+  Steppe = c(220, 182, 191, 234, 290),
+  Desert = c(150, 232, 201, 154, 190),
+  Wetland = c(98, 77, 101, 99, 40)
+)
+
+# Convert wide data to tidy data (https://r4ds.had.co.nz/tidy-data.html)
+data <- data |>
+  tidyr::pivot_longer(Forest:Wetland)
+
+echartr(option = list(
+  tooltip = list(
+    trigger = "axis",
+    axisPointer = list(
+      type = "shadow"
+    )
+  ),
+  legend = list(data = unique(data$name)),
+  toolbox = list(
+    show = TRUE,
+    orient = "vertical",
+    left = "right",
+    top = "center",
+    feature = list(
+      mark = list(show = TRUE),
+      dataView = list(show = TRUE, readOnly = FALSE),
+      magicType = list(show = TRUE, type = c("line", "bar")),
+      restore = list(show = TRUE),
+      saveAsImage = list(show = TRUE)
+    )
+  ),
+  xAxis = list(type = "category", data = unique(data$year)),
+  yAxis = list(type = "value"),
+  series = ec_bar(
+    data, 
+    label = label_option,
+    y = value, 
+    name = name,
+    barGap = 0L
+  )
+))
+```
+

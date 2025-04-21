@@ -19,6 +19,8 @@ spec_zoom <- function(spec, col) {
 #'            and unnamed arguments, which will be combined into a column called `datapoint`
 build_spec <- function(...) {
 
+  # TODO: handle NULL args..
+
   spec <- row_eval(...) |>
     dplyr::rename(datapoint = unnamed)
 

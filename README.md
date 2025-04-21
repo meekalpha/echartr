@@ -4,11 +4,13 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of echartr is to provide an R interface to Apache Echarts that matches the Javascript API as closely as possible.
+echartr provides an R interface to Apache Echarts.
 
-echartr makes it easier to use the more advanced features of Echarts, since you can refer to the official Apache Echarts documentation (https://echarts.apache.org/en/option.html)
+echartr matches the Echarts Javascript API as closely as possible so that you can refer directly to https://echarts.apache.org/en/index.html.
 
-Helper functions are provided to construct 
+## Working with `data.frames`
+
+
 
 ## Installation
 
