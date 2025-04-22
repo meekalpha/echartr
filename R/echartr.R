@@ -1,13 +1,22 @@
 #' Create an Echart
 #'
+#' @param option list-tree representation of echart option argument, see https://echarts.apache.org/en/option.html
+#' @param on list of event listeners to register, see https://echarts.apache.org/en/api.html#echartsInstance.on
+#'
 #' @import htmlwidgets
 #'
 #' @export
-echartr <- function(option = list(), elementId = NULL) {
+echartr <- function(
+  option = list(),
+  on = NULL,
+  elementId = NULL
+) {
 
   # forward options using x
   x = list(
-    option = option
+    option = option,
+    on = on,
+    off = NULL
   )
 
   # create widget

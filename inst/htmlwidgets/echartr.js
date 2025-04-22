@@ -22,7 +22,7 @@ HTMLWidgets.widget({
 
         }
         chart = echarts.init(el);
-        chart.setOption(x.option);
+        update_echartr(chart, x);
       },
 
       resize: function(width, height) {
@@ -39,7 +39,6 @@ function update_echartr(chart, event) {
   if (event.on !== null) {
     event.on.forEach(x => {
       // TODO: More concise way?
-      console.log(eval(x.handler));
       if (Object.hasOwn(x, "query")) {
         chart.on(x.eventName, x.query, eval(x.handler), context = chart);
       } else {
