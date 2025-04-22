@@ -1,9 +1,10 @@
 url: https://meekalpha.github.io/echartr/
 template:
   bootstrap: 5
-articles:
-- title: Examples
-  desc: Example charts
-  navbar: Examples
-  contents:
-    - Examples
+navbar:
+  title: "echartr"
+  left:
+  - text: Examples
+    menu:
+    - text: All Examples
+      href: articles/examples.html
