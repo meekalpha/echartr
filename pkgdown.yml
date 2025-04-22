@@ -1,8 +1,9 @@
 pandoc: 3.1.11
 pkgdown: 2.1.1
 pkgdown_sha: ~
-articles: {}
-last_built: 2025-04-21T10:12Z
+articles:
+  articles/Examples: Examples.html
+last_built: 2025-04-22T05:22Z
 urls:
   reference: https://meekalpha.github.io/echartr/reference
   article: https://meekalpha.github.io/echartr/articles
