@@ -4,7 +4,11 @@ template:
 navbar:
   title: "echartr"
   left:
+  - text: Get Started
+    href: articles/echartr.html
   - text: Examples
     menu:
     - text: All Examples
       href: articles/examples.html
+  - text: Reference
+    href: reference/
