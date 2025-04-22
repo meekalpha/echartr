@@ -1,5 +1,8 @@
 ---
 title: "Examples"
+output:
+  html_document:
+    code_folding: hide
 ---
 
 ```{r, include = FALSE}
@@ -301,4 +304,74 @@ echartr(option = list(
   )
 ))
 ```
+# Pie
 
+## Calendar pie
+
+https://echarts.apache.org/examples/en/editor.html?c=pie-calendar
+
+```{r}
+cell_size <- c(80, 80)
+pie_radius <- 30
+
+data <- tibble::tibble(
+  Work = floor(runif(28, 0, 25)),
+  Entertainment = floor(runif(28, 0, 25)),
+  Sleep = floor(runif(28, 0, 25)),
+  index = 1:28,
+  date = as.character(seq(as.Date("2017-02-01"), as.Date("2017-02-28"), by = "day"))
+)
+
+# Convert wide data to tidy data (https://r4ds.had.co.nz/tidy-data.html)
+data <- data |>
+  tidyr::pivot_longer(Work:Sleep)
+
+echartr(option = list(
+  tooltip = list(),
+  legend = list(
+    data = unique(data$name),
+    bottom = "20"
+  ),
+  calendar = list(
+    top = "middle", left = "center", orient = "vertical",
+    cellSize = cell_size,
+    yearLabel = list(
+      show = FALSE, fontSize = 30
+    ),
+    dayLabel = list(
+      margin = 20, firstDay = 1, 
+      nameMap = c("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")
+    ),
+    monthLabel = list(show = FALSE),
+    range = c("2017-02")
+  ),
+  series = c(
+    ec_scatter(data, 
+      y = date, 
+      id = "label", 
+      coordinateSystem = "calendar", 
+      symbolSize = 0,
+      label = list(
+        show = TRUE, 
+        offset = c(-cell_size[[1]] / 2 + 10, -cell_size[[2]] / 2 + 10),
+        formatter = htmlwidgets::JS(
+          "function(params) { 
+            var date = Date.parse(params.value);
+            return echarts.time.format(date, '{dd}', false);
+          }"
+        )
+      )
+    ),
+    ec_pie(data, 
+      value = value, 
+      id = paste0("pie-", index), 
+      center = date, 
+      coordinateSystem = "calendar",
+      radius = pie_radius,
+      label = list(formatter = "{c}", position = "inside")
+    )
+  )
+))
+
+
+```

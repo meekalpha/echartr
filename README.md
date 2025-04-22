@@ -21,7 +21,12 @@ echartr(option = list(
     iris,
     x = Sepal.Length,
     y = Sepal.Width,
-    name = as.character(Species)
+    name = as.character(Species),
+    symbol = dplyr::case_when(
+      Species == "setosa" ~ "circle",
+      Species == "versicolor" ~ "diamond",
+      Species == "virginica" ~ "triangle"
+    )
   )
 ))
 
