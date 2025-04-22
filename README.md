@@ -9,11 +9,11 @@
 <!-- badges: end -->
 
 The R package `echartr` provides an interface to the
-[Echarts](https://echarts.apache.org/en/index.html) JavaScript library
-for creating interactive charts.
+[Echarts](https://echarts.apache.org) JavaScript library for creating
+interactive charts.
 
 `echartr` aims to match the Echarts Javascript API as closely as
-possible so that you can refer directly to [the official Echarts
+possible so that you can refer directly to the [official Echarts
 documentation](https://echarts.apache.org/en/index.html).
 
 This package is intended for more advanced users with Echarts
@@ -23,7 +23,7 @@ user-friendly and provides a higher-level interface to Echarts.
 
 ## Basic example
 
-The [option](https://echarts.apache.org/en/option.html) argument is
+The [option argument](https://echarts.apache.org/en/option.html) is
 provided as a list of lists:
 
 ``` r
@@ -43,11 +43,11 @@ echartr(option = list(
 ))
 ```
 
-## Working with `data.frame`s
+## Working with data frames
 
 `echartr` provides helper functions for building Echart
-[series](https://echarts.apache.org/en/option.html#series) from
-`data.frame`s
+[series](https://echarts.apache.org/en/option.html#series) from data
+frames
 
 ``` r
 library(datasets)
