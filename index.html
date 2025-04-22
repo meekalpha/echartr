@@ -59,22 +59,63 @@
 </div>
 <!-- badges: start -->
 
-<p>echartr provides an R interface to Apache Echarts, matching the Echarts Javascript API as closely as possible so that you can refer directly to <a href="https://echarts.apache.org/en/index.html" class="external-link uri">https://echarts.apache.org/en/index.html</a>.</p>
+<p>The R package <code>echartr</code> provides an interface to the <a href="https://echarts.apache.org/en/index.html" class="external-link">Echarts</a> JavaScript library for creating interactive charts.</p>
+<p><code>echartr</code> aims to match the Echarts Javascript API as closely as possible so that you can refer directly to <a href="https://echarts.apache.org/en/index.html" class="external-link">the official Echarts documentation</a>.</p>
+<p>This package is intended for more advanced users with Echarts familiarity. It is not intended to be a replacement for the popular <a href="https://echarts4r.john-coene.com/" class="external-link"><code>echarts4r</code></a> package, which is more user-friendly and provides a higher-level interface to Echarts.</p>
 <div class="section level2">
-<h2 id="working-with-dataframes">Working with <code>data.frames</code>
-<a class="anchor" aria-label="anchor" href="#working-with-dataframes"></a>
+<h2 id="basic-example">Basic example<a class="anchor" aria-label="anchor" href="#basic-example"></a>
 </h2>
-<p>echartr provides helper functions for building echart options from <code>data.frames</code></p>
-<p>```{r} library(echartr)</p>
-<p>echartr(option = list( xAxis = list(type = “value”), yAxis = list(type = “value”), series = ec_scatter( iris, x = Sepal.Length, y = Sepal.Width, name = as.character(Species), symbol = dplyr::case_when( Species == “setosa” ~ “circle”, Species == “versicolor” ~ “diamond”, Species == “virginica” ~ “triangle” ) ) ))</p>
-<pre><code>
-## Installation
-
-You can install the development version of echartr like so:
-
-``` r
-# install.packages("remotes")
-remotes::install_github("meekalpha/echartr")</code></pre>
+<p>The <a href="https://echarts.apache.org/en/option.html" class="external-link">option</a> argument is provided as a list of lists:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/meekalpha/echartr" class="external-link">echartr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/echartr.html">echartr</a></span><span class="op">(</span>option <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>  xAxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"category"</span>, data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Mon"</span>, <span class="st">"Tue"</span>, <span class="st">"Wed"</span>, <span class="st">"Thu"</span>, <span class="st">"Fri"</span>, <span class="st">"Sat"</span>, <span class="st">"Sun"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  yAxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"value"</span><span class="op">)</span>,</span>
+<span>  series <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>      name <span class="op">=</span> <span class="st">"Example"</span>,</span>
+<span>      type <span class="op">=</span> <span class="st">"line"</span>,</span>
+<span>      data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">150</span>, <span class="fl">230</span>, <span class="fl">224</span>, <span class="fl">218</span>, <span class="fl">135</span>, <span class="fl">147</span>, <span class="fl">260</span><span class="op">)</span>,</span>
+<span>      smooth <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="working-with-dataframes">Working with <code>data.frame</code>s<a class="anchor" aria-label="anchor" href="#working-with-dataframes"></a>
+</h2>
+<p><code>echartr</code> provides helper functions for building Echart <a href="https://echarts.apache.org/en/option.html#series" class="external-link">series</a> from <code>data.frame</code>s</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">datasets</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/meekalpha/echartr" class="external-link">echartr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/echartr.html">echartr</a></span><span class="op">(</span>option <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>  xAxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"value"</span><span class="op">)</span>,</span>
+<span>  yAxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"value"</span><span class="op">)</span>,</span>
+<span>  legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>show <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>  series <span class="op">=</span> <span class="fu"><a href="reference/ec_scatter.html">ec_scatter</a></span><span class="op">(</span><span class="va">iris</span>,</span>
+<span>                      </span>
+<span>    <span class="co"># Data dimensions and series attributes are provided as expressions that can </span></span>
+<span>    <span class="co"># be evaluated for each row to build multiple series</span></span>
+<span>    x <span class="op">=</span> <span class="va">Petal.Length</span>,</span>
+<span>    y <span class="op">=</span> <span class="va">Petal.Width</span>,</span>
+<span>    </span>
+<span>    name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">Species</span><span class="op">)</span>,</span>
+<span>    symbol <span class="op">=</span> <span class="kw">if</span> <span class="op">(</span><span class="va">Species</span> <span class="op">==</span> <span class="st">"versicolor"</span><span class="op">)</span> <span class="st">"circle"</span> <span class="kw">else</span> <span class="st">"emptyCircle"</span>,</span>
+<span>    itemStyle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>      opacity <span class="op">=</span> <span class="kw">if</span> <span class="op">(</span><span class="va">Species</span> <span class="op">==</span> <span class="st">"setosa"</span><span class="op">)</span> <span class="fl">0.5</span> <span class="kw">else</span> <span class="fl">1</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>You can install the development version of echartr like so:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"meekalpha/echartr"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
