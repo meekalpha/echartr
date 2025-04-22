@@ -18,7 +18,8 @@ Imports:
     rlang,
     shiny,
     stringr,
-    tibble
+    tibble,
+    tidyr
 Suggests: 
     clipr,
     testthat (>= 3.0.0)
