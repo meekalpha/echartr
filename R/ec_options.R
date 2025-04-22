@@ -1,4 +1,5 @@
-
+#' Create a list of options based on specification data frame
+#' @importFrom dplyr all_of
 ec_options_ <- function(spec) {
 
   option_cols <- setdiff(names(spec), c("series", "datapoint"))
@@ -23,6 +24,11 @@ ec_options_ <- function(spec) {
     purrr::transpose()
 }
 
+#' Generate a list of options from a dataframe
+#'
+#' @param df A dataframe that can be referenced via ... arguments
+#' @param ... Expressions that can be evaluated to generate the list-tree
+#'
 #' @export
 ec_options <- function(df, ...) {
   structure(ec_options_(build_spec(df, ...)), class = "ec_object")

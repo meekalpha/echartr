@@ -1,4 +1,7 @@
 
+#' Generate echarts `data` list-tree object from specification dataframe
+#' @keywords internal
+#' @importFrom rlang .data
 ec_data_ <- function(spec) {
 
   if ("value" %in% colnames(spec)) {
@@ -15,8 +18,8 @@ ec_data_ <- function(spec) {
     }
   } else {
     spec |>
-      dplyr::mutate(value = datapoint) |>
-      dplyr::select(-datapoint) |>
+      dplyr::mutate(value = .data$datapoint) |>
+      dplyr::select(-.data$datapoint) |>
       purrr::transpose()
   }
 }

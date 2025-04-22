@@ -5,7 +5,7 @@ Authors@R:
     person("Ashleigh", "Williams", , "ashjw91@gmail.com", role = c("aut", "cre"))
 URL: https://github.com/meekalpha/echartr, https://meekalpha.github.io/echartr/
 BugReports: https://github.com/meekalpha/echartr/issues
-Description: Create Apache Echarts using R, including for Shiny
+Description: Create Apache Echarts using R, including for Shiny.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

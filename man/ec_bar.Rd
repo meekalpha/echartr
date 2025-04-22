@@ -6,8 +6,20 @@
 \usage{
 ec_bar(df, x, y, ...)
 }
+\arguments{
+\item{df}{A dataframe that can be referenced via ... arguments}
+
+\item{x}{The x-axis variable}
+
+\item{y}{The y-axis variable}
+
+\item{...}{Additional arguments to be passed to the series}
+}
 \description{
 https://echarts.apache.org/en/option.html#series-bar
+}
+\details{
+Generates a single bar series or list of series from a dataframe.
 }
 \examples{
 

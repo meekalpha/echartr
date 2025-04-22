@@ -11,3 +11,4 @@ spec_zoom(spec, col)
 Move one level 'deeper' into the specification
 TODO: support unnamed stuff inside row (maybe)
 }
+\keyword{internal}

@@ -1,5 +1,7 @@
 
 #' Evaluate quosures provided to ... for each for in df
+#' @importFrom dplyr starts_with
+#' @importFrom rlang :=
 row_eval <- function(df, ...) {
   args <- rlang::enquos(...)
 

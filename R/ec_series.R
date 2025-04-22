@@ -1,4 +1,5 @@
 #' Create a list of series based on specification data frame
+#' @importFrom dplyr all_of
 ec_series_ <- function(spec) {
 
   serie_cols <- setdiff(names(spec), c("data", "datapoint"))
@@ -83,6 +84,12 @@ ec_line <- function(df, x, y, ...) {
 #'
 #' https://echarts.apache.org/en/option.html#series-bar
 #'
+#' Generates a single bar series or list of series from a dataframe.
+#'
+#' @param df A dataframe that can be referenced via ... arguments
+#' @param x The x-axis variable
+#' @param y The y-axis variable
+#' @param ... Additional arguments to be passed to the series
 #' @examples
 #'
 #' # Including x-value in series data

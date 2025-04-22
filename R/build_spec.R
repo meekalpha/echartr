@@ -1,9 +1,10 @@
 #' Move one level 'deeper' into the specification
-#' @keywords internal
 #' TODO: support unnamed stuff inside row (maybe)
+#' @keywords internal
+#' @importFrom rlang .data
 spec_zoom <- function(spec, col) {
   res <- spec |>
-    dplyr::select(datapoint)
+    dplyr::select(.data$datapoint)
 
   if (col %in% colnames(spec)) {
     res <- spec |>
@@ -17,6 +18,7 @@ spec_zoom <- function(spec, col) {
 
 #' Convert function args to a dataframe
 #' @keywords internal
+#' @importFrom rlang .data
 #' @param ... A combination of named arguments, which will each become a column,
 #'            and unnamed arguments, which will be combined into a column called `datapoint`
 build_spec <- function(...) {
@@ -24,7 +26,7 @@ build_spec <- function(...) {
   # TODO: handle NULL args..
 
   spec <- row_eval(...) |>
-    dplyr::rename(datapoint = unnamed)
+    dplyr::rename(datapoint = .data$unnamed)
 
   if (length(spec$datapoint) == 0 || length(spec$datapoint[[1]]) == 0) {
     warning("No data dimensions specified")
@@ -39,7 +41,7 @@ build_spec <- function(...) {
 
   if (n_classes == 1) {
     spec <- spec |>
-      dplyr::mutate(datapoint = purrr::map(datapoint, unlist))
+      dplyr::mutate(datapoint = purrr::map(.data$datapoint, unlist))
   }
 
   # Convert data to a vector where one dimension of single type
