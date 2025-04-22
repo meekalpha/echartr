@@ -1,4 +1,5 @@
 #' Create a list of series based on specification data frame
+#' @keywords internal
 #' @importFrom dplyr all_of
 ec_series_ <- function(spec) {
 

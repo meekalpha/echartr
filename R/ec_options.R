@@ -1,4 +1,5 @@
 #' Create a list of options based on specification data frame
+#' @keywords internal
 #' @importFrom dplyr all_of
 ec_options_ <- function(spec) {
 
