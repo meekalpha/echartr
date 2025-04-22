@@ -1,4 +1,5 @@
 #' Move one level 'deeper' into the specification
+#' @keywords internal
 #' TODO: support unnamed stuff inside row (maybe)
 spec_zoom <- function(spec, col) {
   res <- spec |>
@@ -15,6 +16,7 @@ spec_zoom <- function(spec, col) {
 }
 
 #' Convert function args to a dataframe
+#' @keywords internal
 #' @param ... A combination of named arguments, which will each become a column,
 #'            and unnamed arguments, which will be combined into a column called `datapoint`
 build_spec <- function(...) {
