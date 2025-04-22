@@ -63,7 +63,7 @@
 </h2>
 <p>echartr provides helper functions for building echart options from <code>data.frames</code></p>
 <p>```{r} library(echartr)</p>
-<p>echartr(option = list( xAxis = list(type = “value”), yAxis = list(type = “value”), series = ec_scatter( iris, x = Sepal.Length, y = Sepal.Width, name = as.character(Species) ) ))</p>
+<p>echartr(option = list( xAxis = list(type = “value”), yAxis = list(type = “value”), series = ec_scatter( iris, x = Sepal.Length, y = Sepal.Width, name = as.character(Species), symbol = dplyr::case_when( Species == “setosa” ~ “circle”, Species == “versicolor” ~ “diamond”, Species == “virginica” ~ “triangle” ) ) ))</p>
 <pre><code>
 ## Installation
 
