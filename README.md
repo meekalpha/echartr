@@ -2,6 +2,7 @@
 # echartr
 
 <!-- badges: start -->
+<a href="https://meekalpha.github.io/echartr/"><img src="man/figures/logo.png" align="right" height="138" alt="echartr website" /></a>
 <!-- badges: end -->
 
 echartr provides an R interface to Apache Echarts, matching the Echarts Javascript API as closely as possible so that you can refer directly to https://echarts.apache.org/en/index.html.

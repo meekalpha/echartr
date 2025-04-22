@@ -306,6 +306,36 @@ echartr(option = list(
 ```
 # Pie
 
+## Doughnut Chart
+
+https://echarts.apache.org/examples/en/editor.html?c=pie-doughnut
+
+```{r}
+data <- tibble::tibble(
+  name = c("Search Engine", "Direct", "Email", "Union Ads", "Video Ads"),
+  value = c(1048, 735, 580, 484, 300)
+)
+
+echartr(option = list(
+  tooltip = list(trigger = "item"),
+  legend = list(top = "5%", left = "center"),
+  series = ec_pie(data,
+    value, 
+    name = "Access From",
+    data = list(name = name),
+    radius = list("40%", "70%"),
+    avoidLabelOverlap = FALSE,
+    label = list(show = FALSE, position = "center"),
+    emphasis = list(label = list(
+      show = TRUE,
+      fontSize = 40,
+      fontWeight = "bold"
+    )),
+    labelLine = list(show = FALSE)
+  )
+))
+```
+
 ## Calendar pie
 
 https://echarts.apache.org/examples/en/editor.html?c=pie-calendar
