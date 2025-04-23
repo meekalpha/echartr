@@ -25,6 +25,7 @@ ec_data_ <- function(spec) {
 }
 
 #' Generate echarts `data` list-tree object from a dataframe
+#' @param df data frame that can be referenced via ... arguments
 #' @param ... Expressions that can be evaluated to generate the list-tree
 #' @export
 ec_data <- function(df, ...) {

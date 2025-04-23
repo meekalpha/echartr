@@ -7,6 +7,8 @@
 ec_data(df, ...)
 }
 \arguments{
+\item{df}{data frame that can be referenced via ... arguments}
+
 \item{...}{Expressions that can be evaluated to generate the list-tree}
 }
 \description{

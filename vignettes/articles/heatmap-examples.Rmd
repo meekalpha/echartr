@@ -1,0 +1,53 @@
+---
+title: "Heatmap Examples"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(echartr)
+```
+
+# Heatmap on Cartesian
+
+https://echarts.apache.org/examples/en/editor.html?c=heatmap-cartesian
+
+```{r}
+# TODO: This example is incomplete
+
+data <- tidyr::expand_grid(
+  hours = 0:23,
+  days = lubridate::wday(0:6, week_start = "Sat", label = TRUE)
+)
+data$value <- floor(runif(nrow(data), 0, 10)) |>
+  purrr::map_chr(~if (.x == 0) '-' else as.character(.x))
+
+echartr(option = list(
+  xAxis = list(
+    type = "category", 
+    data = unique(data$hours),
+    splitArea = list(show = TRUE)
+  ),
+  yAxis = list(
+    type = "category", 
+    data = unique(data$days),
+    splitArea = list(show = TRUE)
+  ),
+  visualMap = list(
+    min = 0, max = 10,
+    calculable = TRUE,
+    orient = "horizontal",
+    left = "center",
+    bottom = "15%"
+  ),
+  series = ec_series(
+    data, hours, days, value, type = "heatmap",
+    label = list(show = TRUE)
+  )
+))
+```

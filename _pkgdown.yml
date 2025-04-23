@@ -12,5 +12,7 @@ navbar:
     menu:
     - text: All Examples
       href: articles/examples.html
+    - text: Heatmap
+      href: articles/examples/heatmap-examples.html
   - text: Reference
     href: reference/

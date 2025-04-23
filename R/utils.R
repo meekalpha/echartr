@@ -1,5 +1,8 @@
 
 #' Evaluate quosures provided to ... for each for in df
+#' @keywords internal
+#' @param df A dataframe to evaluate the quosures against
+#' @param ... A combination of named arguments, which will each become a column
 #' @importFrom dplyr starts_with
 #' @importFrom rlang :=
 row_eval <- function(df, ...) {

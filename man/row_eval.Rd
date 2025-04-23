@@ -6,6 +6,12 @@
 \usage{
 row_eval(df, ...)
 }
+\arguments{
+\item{df}{A dataframe to evaluate the quosures against}
+
+\item{...}{A combination of named arguments, which will each become a column}
+}
 \description{
 Evaluate quosures provided to ... for each for in df
 }
+\keyword{internal}

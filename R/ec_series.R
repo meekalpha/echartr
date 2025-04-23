@@ -45,6 +45,11 @@ ec_series <- function(df, ..., type) {
 
 #' Line series
 #'
+#' @param df A dataframe that can be referenced via ... arguments
+#' @param ... Series attributes
+#' @param x The x-axis variable
+#' @param y The y-axis variable
+#'
 #' @examples
 #'
 #' # Including x-value in series data

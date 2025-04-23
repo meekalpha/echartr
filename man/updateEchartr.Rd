@@ -10,7 +10,8 @@ updateEchartr(
   option = NULL,
   on = NULL,
   off = NULL,
-  listen = character()
+  dispatch = NULL,
+  listen = NULL
 )
 }
 \arguments{
@@ -22,7 +23,13 @@ updateEchartr(
 
 \item{on}{list of event listeners to register, see https://echarts.apache.org/en/api.html#echartsInstance.on}
 
-\item{off}{list of event listeners to de-register, see https://echarts.apache.org/en/api.html#echartsInstance.off
+\item{off}{list of event listeners to de-register, see https://echarts.apache.org/en/api.html#echartsInstance.off}
+
+\item{listen}{character vector of events to include in Shiny input, any of https://echarts.apache.org/en/api.html#events
+
+Event output is available as \verb{input$<outputId>_<event>}. For mouse events, event data is limited.
+
+\code{listen} will only add new listeners - to deregister existing listeners, use \code{off}.
 
 Intention is to support all functions under https://echarts.apache.org/en/api.html#echartsInstance}
 }

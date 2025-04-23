@@ -6,6 +6,15 @@
 \usage{
 ec_line(df, x, y, ...)
 }
+\arguments{
+\item{df}{A dataframe that can be referenced via ... arguments}
+
+\item{x}{The x-axis variable}
+
+\item{y}{The y-axis variable}
+
+\item{...}{Series attributes}
+}
 \description{
 Line series
 }
