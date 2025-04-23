@@ -51,6 +51,15 @@ function update_echartr(chart, event) {
       chart.off(x.eventName);
     });
   }
+  if (HTMLWidgets.shinyMode) {
+    event.listen.forEach(x => {
+      chart.on(x, e => {
+        const shinyInput = chart._dom.id + "_" + x;
+        delete e.event; // Mouse events have an event property that is not readily serializable
+        Shiny.setInputValue(shinyInput, e);
+      })
+    })
+  }
 }
 
 

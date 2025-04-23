@@ -9,3 +9,4 @@ ec_series_(spec)
 \description{
 Create a list of series based on specification data frame
 }
+\keyword{internal}

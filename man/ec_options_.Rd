@@ -9,3 +9,4 @@ ec_options_(spec)
 \description{
 Create a list of options based on specification data frame
 }
+\keyword{internal}

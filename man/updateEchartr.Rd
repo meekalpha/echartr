@@ -9,7 +9,8 @@ updateEchartr(
   outputId,
   option = NULL,
   on = NULL,
-  off = NULL
+  off = NULL,
+  listen = character()
 )
 }
 \arguments{

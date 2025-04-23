@@ -1,7 +1,37 @@
 #' Create an Echart
 #'
-#' @param option list-tree representation of echart option argument, see https://echarts.apache.org/en/option.html
-#' @param on list of event listeners to register, see https://echarts.apache.org/en/api.html#echartsInstance.on
+#' @param option list-tree representation of echarts option argument, see [https://echarts.apache.org/en/option.html]
+#' @param on list of event listeners to register, see [https://echarts.apache.org/en/api.html#echartsInstance.on]
+#' @param listen character vector of events to include in Shiny input, any of [https://echarts.apache.org/en/api.html#events]
+#'
+#'   Event output is available as `input$<outputId>_<event>`. For mouse events, event data is limited.
+#'
+#' @section Events:
+#'
+#' [https://echarts.apache.org/en/api.html#events]
+#'
+#' Event listeners can be registered via the `on` argument.
+#' Each listener is a named list, for example:
+#'
+#' ```r
+#' echartr(
+#'  option = ...,
+#'  on = list(
+#'    list(
+#'      eventName = "click",
+#'      handler = htmlwidgets::JS("params => console.log(params)")
+#'    ),
+#'    list(
+#'      eventName = "selectchanged",
+#'      query = ,
+#'      handler = htmlwidgets::JS("function(params) {
+#'        console.log(x);
+#'      }")
+#'    )
+#'  )
+#' )
+#' ```
+#' The `context` for the handler is the Echart instance - this can be accessed within the handler via `this.context`
 #'
 #' @import htmlwidgets
 #'
@@ -9,14 +39,20 @@
 echartr <- function(
   option = list(),
   on = NULL,
+  listen = character(),
   elementId = NULL
 ) {
+
+  if (!purrr::is_empty(listen) && !shiny::isRunning()) {
+    warning("`listen` argument is only available in Shiny applications")
+  }
 
   # forward options using x
   x = list(
     option = option,
     on = on,
-    off = NULL
+    off = NULL,
+    listen = as.list(listen)
   )
 
   # create widget
@@ -74,7 +110,8 @@ updateEchartr <- function(
   outputId,
   option = NULL,
   on = NULL,
-  off = NULL
+  off = NULL,
+  listen = character()
 ) {
   session$sendCustomMessage(
     sprintf("__echartr__%s", outputId),

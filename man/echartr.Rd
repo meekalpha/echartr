@@ -4,8 +4,46 @@
 \alias{echartr}
 \title{Create an Echart}
 \usage{
-echartr(option = list(), elementId = NULL)
+echartr(option = list(), on = NULL, listen = character(), elementId = NULL)
+}
+\arguments{
+\item{option}{list-tree representation of echarts option argument, see \link{https://echarts.apache.org/en/option.html}}
+
+\item{on}{list of event listeners to register, see \link{https://echarts.apache.org/en/api.html#echartsInstance.on}}
+
+\item{listen}{character vector of events to include in Shiny input, any of \link{https://echarts.apache.org/en/api.html#events}
+
+Event output is available as \verb{input$<outputId>_<event>}. For mouse events, event data is limited.}
 }
 \description{
 Create an Echart
 }
+\section{Events}{
+
+
+\link{https://echarts.apache.org/en/api.html#events}
+
+Event listeners can be registered via the \code{on} argument.
+Each listener is a named list, for example:
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{echartr(
+ option = ...,
+ on = list(
+   list(
+     eventName = "click",
+     handler = htmlwidgets::JS("params => console.log(params)")
+   ),
+   list(
+     eventName = "selectchanged",
+     query = ,
+     handler = htmlwidgets::JS("function(params) \{
+       console.log(x);
+     \}")
+   )
+ )
+)
+}\if{html}{\out{</div>}}
+
+The \code{context} for the handler is the Echart instance - this can be accessed within the handler via \code{this.context}
+}
+
