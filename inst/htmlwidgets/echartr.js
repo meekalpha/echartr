@@ -51,6 +51,11 @@ function update_echartr(chart, event) {
       chart.off(x.eventName);
     });
   }
+  if (event.dispatch !== null) {
+    event.dispatch.forEach(x => {
+      chart.dispatchAction(x);
+    });
+  }
   if (HTMLWidgets.shinyMode) {
     event.listen.forEach(x => {
       chart.on(x, e => {

@@ -2,11 +2,12 @@
 #'
 #' @param option list-tree representation of echarts option argument, see [https://echarts.apache.org/en/option.html]
 #' @param on list of event listeners to register, see [https://echarts.apache.org/en/api.html#echartsInstance.on]
+#' @param dispatch list of actions to dispatch immediately, see [][https://echarts.apache.org/en/api.html#echartsInstance.dispatchAction]
 #' @param listen character vector of events to include in Shiny input, any of [https://echarts.apache.org/en/api.html#events]
 #'
 #'   Event output is available as `input$<outputId>_<event>`. For mouse events, event data is limited.
 #'
-#' @section Events:
+#' @section Event listeners:
 #'
 #' [https://echarts.apache.org/en/api.html#events]
 #'
@@ -39,6 +40,7 @@
 echartr <- function(
   option = list(),
   on = NULL,
+  dispatch = NULL,
   listen = character(),
   elementId = NULL
 ) {
@@ -52,6 +54,7 @@ echartr <- function(
     option = option,
     on = on,
     off = NULL,
+    dispatch = dispatch,
     listen = as.list(listen)
   )
 
@@ -102,6 +105,11 @@ renderEchartr <- function(expr, env = parent.frame(), quoted = FALSE) {
 #' @param option list-tree representation of echart option argument, see https://echarts.apache.org/en/option.html
 #' @param on list of event listeners to register, see https://echarts.apache.org/en/api.html#echartsInstance.on
 #' @param off list of event listeners to de-register, see https://echarts.apache.org/en/api.html#echartsInstance.off
+#' @param listen character vector of events to include in Shiny input, any of https://echarts.apache.org/en/api.html#events
+#'
+#'  Event output is available as `input$<outputId>_<event>`. For mouse events, event data is limited.
+#'
+#'  `listen` will only add new listeners - to deregister existing listeners, use `off`.
 #'
 #' Intention is to support all functions under https://echarts.apache.org/en/api.html#echartsInstance
 #' @export
@@ -111,11 +119,18 @@ updateEchartr <- function(
   option = NULL,
   on = NULL,
   off = NULL,
+  dispatch = NULL,
   listen = character()
 ) {
   session$sendCustomMessage(
     sprintf("__echartr__%s", outputId),
-    list(option = option, on = on, off = off)
+    list(
+      option = option,
+      on = on,
+      off = off,
+      dispatch = dispatch,
+      listen = as.list(listen)
+    )
   )
 }
 
