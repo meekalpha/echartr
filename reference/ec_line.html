@@ -16,6 +16,7 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../articles/echartr.html">Get Started</a></li>
+<li class="nav-item"><a class="nav-link" href="../articles/shiny.html">Shiny</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-examples" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Examples</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-examples"><li><a class="dropdown-item" href="../articles/examples.html">All Examples</a></li>
@@ -60,7 +61,7 @@
 <span class="r-in"><span>  series <span class="op">=</span> <span class="va">series</span></span></span>
 <span class="r-in"><span><span class="op">)</span><span class="op">)</span></span></span>
 <div id="htmlwidget-36aa3d2a04d42bbc2145" style="width:700px;height:432.632880098888px;" class="echartr html-widget"></div>
-<script type="application/json" data-for="htmlwidget-36aa3d2a04d42bbc2145">{"x":{"option":{"xAxis":{"type":"value"},"yAxis":{"type":"value"},"legend":{"show":true},"series":[{"type":"line","data":[[1,-0.5536993836887205],[2,0.628982042036008],[3,2.065024895359223],[4,-1.630989402082232],[5,0.5124269498518048]]}]},"on":null,"off":null},"evals":[],"jsHooks":[]}</script><span class="r-in"><span></span></span>
+<script type="application/json" data-for="htmlwidget-36aa3d2a04d42bbc2145">{"x":{"option":{"xAxis":{"type":"value"},"yAxis":{"type":"value"},"legend":{"show":true},"series":[{"type":"line","data":[[1,-0.5536993836887205],[2,0.628982042036008],[3,2.065024895359223],[4,-1.630989402082232],[5,0.5124269498518048]]}]},"on":null,"off":null,"dispatch":null,"listen":[],"update":false},"evals":[],"jsHooks":[]}</script><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Including x-value in axis data - requires category type axis</span></span></span>
 <span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">series</span> <span class="op">&lt;-</span> <span class="fu">ec_line</span><span class="op">(</span><span class="va">data</span>, y <span class="op">=</span> <span class="va">y</span><span class="op">)</span></span></span>
@@ -72,7 +73,7 @@
 <span class="r-in"><span>  series <span class="op">=</span> <span class="va">series</span></span></span>
 <span class="r-in"><span><span class="op">)</span><span class="op">)</span></span></span>
 <div id="htmlwidget-febe03efa1a2d8d52a86" style="width:700px;height:432.632880098888px;" class="echartr html-widget"></div>
-<script type="application/json" data-for="htmlwidget-febe03efa1a2d8d52a86">{"x":{"option":{"xAxis":{"type":"category","data":[1,2,3,4,5]},"yAxis":{"type":"value"},"legend":{"show":true},"series":[{"type":"line","data":[-1.863011492068328,-0.5220125147454544,-0.05260190995387954,0.5429963426611403,-0.9140748272599284]}]},"on":null,"off":null},"evals":[],"jsHooks":[]}</script><span class="r-in"><span></span></span>
+<script type="application/json" data-for="htmlwidget-febe03efa1a2d8d52a86">{"x":{"option":{"xAxis":{"type":"category","data":[1,2,3,4,5]},"yAxis":{"type":"value"},"legend":{"show":true},"series":[{"type":"line","data":[-1.863011492068328,-0.5220125147454544,-0.05260190995387954,0.5429963426611403,-0.9140748272599284]}]},"on":null,"off":null,"dispatch":null,"listen":[],"update":false},"evals":[],"jsHooks":[]}</script><span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
