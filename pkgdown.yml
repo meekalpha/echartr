@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   echartr: echartr.html
   articles/examples: examples.html
-last_built: 2025-04-22T13:48Z
+last_built: 2025-04-23T05:15Z
 urls:
   reference: https://meekalpha.github.io/echartr/reference
   article: https://meekalpha.github.io/echartr/articles

@@ -81,7 +81,7 @@ basic line chart</a> like so:</p>
 <span>  series <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"line"</span>, data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">150</span>, <span class="fl">230</span>, <span class="fl">224</span>, <span class="fl">218</span>, <span class="fl">135</span>, <span class="fl">147</span>, <span class="fl">260</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="echartr html-widget html-fill-item" id="htmlwidget-ac96cb3ee4656e2e9ec3" style="width:700px;height:432.632880098888px;"></div>
-<script type="application/json" data-for="htmlwidget-ac96cb3ee4656e2e9ec3">{"x":{"option":{"xAxis":{"type":"category","data":["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]},"yAxis":{"type":"value"},"series":{"type":"line","data":[150,230,224,218,135,147,260]}}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-ac96cb3ee4656e2e9ec3">{"x":{"option":{"xAxis":{"type":"category","data":["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]},"yAxis":{"type":"value"},"series":{"type":"line","data":[150,230,224,218,135,147,260]}},"on":null,"off":null},"evals":[],"jsHooks":[]}</script>
 </div>
 <div class="section level2">
 <h2 id="working-with-data-frames">Working with data frames<a class="anchor" aria-label="anchor" href="#working-with-data-frames"></a>
@@ -103,7 +103,7 @@ prefixed with <code>ec_</code>.</p>
 <span>  series <span class="op">=</span> <span class="fu"><a href="../reference/ec_line.html">ec_line</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">day</span>, <span class="va">value</span><span class="op">)</span></span>
 <span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="echartr html-widget html-fill-item" id="htmlwidget-e5c8c404fe174e4c81bd" style="width:700px;height:432.632880098888px;"></div>
-<script type="application/json" data-for="htmlwidget-e5c8c404fe174e4c81bd">{"x":{"option":{"xAxis":{"type":"category"},"yAxis":{"type":"value"},"series":[{"type":"line","data":[["Mon",150],["Tue",230],["Wed",224],["Thu",218],["Fri",135],["Sat",147],["Sun",260]]}]}},"evals":[],"jsHooks":[]}</script><p>All <code>ec_</code> functions take a data frame as the first
+<script type="application/json" data-for="htmlwidget-e5c8c404fe174e4c81bd">{"x":{"option":{"xAxis":{"type":"category"},"yAxis":{"type":"value"},"series":[{"type":"line","data":[["Mon",150],["Tue",230],["Wed",224],["Thu",218],["Fri",135],["Sat",147],["Sun",260]]}]},"on":null,"off":null},"evals":[],"jsHooks":[]}</script><p>All <code>ec_</code> functions take a data frame as the first
 argument. <code>ec_line</code> expects a <code>y</code> argument and
 optionally an <code>x</code> argument, which can be <strong>any
 expression</strong> that can be evaluated from the data frame columns
@@ -121,7 +121,7 @@ and local environment.</p>
 <span>  series <span class="op">=</span> <span class="fu"><a href="../reference/ec_line.html">ec_line</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">day</span>, <span class="fu">inverse</span><span class="op">(</span><span class="va">value</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="echartr html-widget html-fill-item" id="htmlwidget-36aa3d2a04d42bbc2145" style="width:700px;height:432.632880098888px;"></div>
-<script type="application/json" data-for="htmlwidget-36aa3d2a04d42bbc2145">{"x":{"option":{"xAxis":{"type":"category"},"yAxis":{"type":"value"},"series":[{"type":"line","data":[["Mon",0.006666666666666667],["Tue",0.004347826086956522],["Wed",0.004464285714285714],["Thu",0.004587155963302753],["Fri",0.007407407407407408],["Sat",0.006802721088435374],["Sun",0.003846153846153846]]}]}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-36aa3d2a04d42bbc2145">{"x":{"option":{"xAxis":{"type":"category"},"yAxis":{"type":"value"},"series":[{"type":"line","data":[["Mon",0.006666666666666667],["Tue",0.004347826086956522],["Wed",0.004464285714285714],["Thu",0.004587155963302753],["Fri",0.007407407407407408],["Sat",0.006802721088435374],["Sun",0.003846153846153846]]}]},"on":null,"off":null},"evals":[],"jsHooks":[]}</script>
 </div>
 <div class="section level2">
 <h2 id="series-properties">Series properties<a class="anchor" aria-label="anchor" href="#series-properties"></a>
@@ -137,7 +137,7 @@ properties</a> can be provided as named arguments to the
 <span>  series <span class="op">=</span> <span class="fu"><a href="../reference/ec_line.html">ec_line</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">day</span>, <span class="va">value</span>, lineStyle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">5</span>, type <span class="op">=</span> <span class="st">"solid"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="echartr html-widget html-fill-item" id="htmlwidget-febe03efa1a2d8d52a86" style="width:700px;height:432.632880098888px;"></div>
-<script type="application/json" data-for="htmlwidget-febe03efa1a2d8d52a86">{"x":{"option":{"xAxis":{"type":"category"},"yAxis":{"type":"value"},"series":[{"type":"line","lineStyle":{"width":5,"type":"solid"},"data":[["Mon",150],["Tue",230],["Wed",224],["Thu",218],["Fri",135],["Sat",147],["Sun",260]]}]}},"evals":[],"jsHooks":[]}</script><p>These can also refer to the data frame columns - any series property
+<script type="application/json" data-for="htmlwidget-febe03efa1a2d8d52a86">{"x":{"option":{"xAxis":{"type":"category"},"yAxis":{"type":"value"},"series":[{"type":"line","lineStyle":{"width":5,"type":"solid"},"data":[["Mon",150],["Tue",230],["Wed",224],["Thu",218],["Fri",135],["Sat",147],["Sun",260]]}]},"on":null,"off":null},"evals":[],"jsHooks":[]}</script><p>These can also refer to the data frame columns - any series property
 taking multiple values will result in multiple series. Consider the case
 where we want to plot 2 different weeks:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -158,7 +158,7 @@ where we want to plot 2 different weeks:</p>
 <span>  series <span class="op">=</span> <span class="fu"><a href="../reference/ec_line.html">ec_line</a></span><span class="op">(</span><span class="va">data2</span>, <span class="va">day</span>, <span class="va">value</span>, name <span class="op">=</span> <span class="va">week</span><span class="op">)</span></span>
 <span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="echartr html-widget html-fill-item" id="htmlwidget-1fb4450895fe099f74a1" style="width:700px;height:432.632880098888px;"></div>
-<script type="application/json" data-for="htmlwidget-1fb4450895fe099f74a1">{"x":{"option":{"xAxis":{"type":"category"},"yAxis":{"type":"value"},"legend":{"show":true},"series":[{"type":"line","name":"Week 1","data":[["Mon",150],["Tue",230],["Wed",224],["Thu",218],["Fri",135],["Sat",147],["Sun",260]]},{"type":"line","name":"Week 2","data":[["Mon",180],["Tue",200],["Wed",252],["Thu",177],["Fri",200],["Sat",212],["Sun",276]]}]}},"evals":[],"jsHooks":[]}</script><p>This works even for deeply nested properties:</p>
+<script type="application/json" data-for="htmlwidget-1fb4450895fe099f74a1">{"x":{"option":{"xAxis":{"type":"category"},"yAxis":{"type":"value"},"legend":{"show":true},"series":[{"type":"line","name":"Week 1","data":[["Mon",150],["Tue",230],["Wed",224],["Thu",218],["Fri",135],["Sat",147],["Sun",260]]},{"type":"line","name":"Week 2","data":[["Mon",180],["Tue",200],["Wed",252],["Thu",177],["Fri",200],["Sat",212],["Sun",276]]}]},"on":null,"off":null},"evals":[],"jsHooks":[]}</script><p>This works even for deeply nested properties:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/echartr.html">echartr</a></span><span class="op">(</span>option <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>  xAxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"category"</span><span class="op">)</span>,</span>
@@ -173,7 +173,7 @@ where we want to plot 2 different weeks:</p>
 <span>  <span class="op">)</span></span>
 <span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="echartr html-widget html-fill-item" id="htmlwidget-10b3b7155e8045a1b2ad" style="width:700px;height:432.632880098888px;"></div>
-<script type="application/json" data-for="htmlwidget-10b3b7155e8045a1b2ad">{"x":{"option":{"xAxis":{"type":"category"},"yAxis":{"type":"value"},"legend":{"show":true},"series":[{"type":"line","name":"Week 1","label":{"show":true},"data":[["Mon",150],["Tue",230],["Wed",224],["Thu",218],["Fri",135],["Sat",147],["Sun",260]]},{"type":"line","name":"Week 2","label":{"show":false},"data":[["Mon",180],["Tue",200],["Wed",252],["Thu",177],["Fri",200],["Sat",212],["Sun",276]]}]}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-10b3b7155e8045a1b2ad">{"x":{"option":{"xAxis":{"type":"category"},"yAxis":{"type":"value"},"legend":{"show":true},"series":[{"type":"line","name":"Week 1","label":{"show":true},"data":[["Mon",150],["Tue",230],["Wed",224],["Thu",218],["Fri",135],["Sat",147],["Sun",260]]},{"type":"line","name":"Week 2","label":{"show":false},"data":[["Mon",180],["Tue",200],["Wed",252],["Thu",177],["Fri",200],["Sat",212],["Sun",276]]}]},"on":null,"off":null},"evals":[],"jsHooks":[]}</script>
 </div>
 <div class="section level2">
 <h2 id="debugging-in-javascript">Debugging in Javascript<a class="anchor" aria-label="anchor" href="#debugging-in-javascript"></a>
