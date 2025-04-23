@@ -1,0 +1,256 @@
+---
+title: "Shiny"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(echartr)
+library(shiny)
+library(rlang) # for `%||%`
+```
+
+# Rendering
+
+The ui function is `echartrOutput()`.
+
+The server function is `renderEchartr()`.
+
+```{r, eval = FALSE}
+library(shiny)
+
+shinyApp(
+  ui = fluidPage(
+    titlePanel("Echarts in Shiny"),
+    echartrOutput("chart")
+  ),
+  server = function(input, output) {
+    output$chart <- renderEchartr({
+      echartr(option = list(
+        xAxis = list(type = "value"),
+        yAxis = list(type = "value"),
+        series = ec_scatter(iris, 
+          x = Petal.Width, 
+          y = Petal.Length, 
+          name = as.character(Species)
+        )
+      ))
+    })
+  }
+)
+```
+
+# Updating
+
+By default, on each render the chart will be fully disposed of and recreated.
+
+To override this behavior and update the existing chart, use `update = TRUE` in `echartr()`:
+
+```{r, eval = FALSE}
+
+# Toggle between two series to show the difference between updating and rerendering
+series <- list(
+  ec_scatter(iris, x = Petal.Width,y = Petal.Length, name = Species),
+  ec_scatter(iris,x = Sepal.Width, y = Sepal.Length, name = Species)
+)
+
+shinyApp(
+  ui = fluidPage(
+    titlePanel("Echarts in Shiny"),
+    echartrOutput("chart_replace"),
+    echartrOutput("chart_update")
+  ),
+  server = function(input, output) {
+    
+    # Toggle the series every 2 seconds
+    rv <- reactiveValues(series_index = 2L)
+    current_series <- reactive({
+      invalidateLater(2000L)
+      
+      isolate({
+        rv$series_index <- 3L - rv$series_index
+        series[[rv$series_index]]
+      })
+    })
+    
+    # Chart with default update = FALSE
+    output$chart_replace <- renderEchartr({
+      echartr(option = list(
+        title = list(text = "Replace"),
+        xAxis = list(type = "value"),
+        yAxis = list(type = "value"),
+        series = current_series()
+      ))
+    })
+    
+    # Chart with update = TRUE
+    output$chart_update <- renderEchartr({
+      echartr(update = TRUE, option = list(
+        title = list(text = "Update"),
+        xAxis = list(type = "value"),
+        yAxis = list(type = "value"),
+        series = current_series()
+      ))
+    })
+  }
+)
+```
+
+
+The other way to update an existing chart is with `updateEchartr()` within an `observe()`.
+
+Updating the `option` argument this way will avoid the `recalculating` state.
+
+Another use of `updateEchartr()` is to dispatch actions. For example, updating which series is highlighted based on a selectInput:
+
+```{r, eval = FALSE}
+series <- ec_scatter(
+  iris, Petal.Length, Petal.Width, 
+  name = as.character(Species),
+  selectedMode = "multiple",
+  silent = TRUE,
+  itemStyle = list(opacity = 0.3),
+  emphasis = list(
+    itemStyle = list(opacity = 1)
+  )
+)
+
+shinyApp(
+  ui = fluidPage(
+    titlePanel("Echarts in Shiny"),
+    sidebarLayout(
+      sidebarPanel(
+        selectInput(
+          "highlight", "Highlight: ", 
+          choices = as.character(iris$Species),
+          selected = 1
+        )
+      ),
+      mainPanel(
+        echartrOutput("chart")
+      )
+    )
+  ),
+  server = function(input, output) {
+    
+    output$chart <- renderEchartr({
+      echartr(
+        option = list(
+          xAxis = list(type = "value"),
+          yAxis = list(type = "value"),
+          series = series
+        ),
+        dispatch = list(
+          # Highlight initial selection immediately
+          list(type = "highlight", seriesName = isolate(input$highlight))
+        )
+      )
+    })
+    
+    # Update highlight based on input
+    observe({
+      updateEchartr(outputId = "chart", dispatch = list(
+        list(
+          type = "highlight", 
+          seriesName = input$highlight
+        ),
+        list(
+          type = "downplay", 
+          seriesName = setdiff(as.character(iris$Species), input$highlight)
+        )
+      ))
+    })
+  }
+)
+```
+
+# Event listeners
+
+Either `renderEchartr()` or `updateEchartr()` can be used to specify which event data to send to the server, via the `listen` parameter.
+
+To de-register event listeners, you can use the `off` parameter of `updateEchartr()`
+
+```{r, eval = FALSE}
+listeners <- c("click", "mouseover", "mouseout", "selectchanged", "legendselectchanged")
+
+shinyApp(
+  ui = fluidPage(
+    titlePanel("Echarts in Shiny"),
+    sidebarLayout(
+      sidebarPanel(
+        selectInput(
+          "listen_to", "Listen to: ", 
+          choices = listeners,
+          multiple = TRUE
+        ),
+        h6("Latest event:"),
+        verbatimTextOutput("events")
+      ),
+      mainPanel(
+        echartrOutput("chart")
+      )
+    )
+  ),
+  server = function(input, output) {
+    
+    output$chart <- renderEchartr({
+      echartr(option = list(
+        xAxis = list(type = "value"),
+        yAxis = list(type = "value"),
+        legend = list(show = TRUE),
+        series = ec_scatter(
+          iris, Petal.Length, Petal.Width, 
+          name = as.character(Species),
+          selectedMode = "multiple"
+        )
+      ))
+    })
+    
+    rv <- reactiveValues(
+      listen_to = list(), # Track how listeners change
+      latest_event = NULL
+    )
+
+    # Register which events to listen for
+    observe({
+      listen_to <- input$listen_to %||% character()
+      
+      updateEchartr(
+        outputId = "chart",
+        listen = setdiff(listen_to, rv$listen_to), # Add new listeners
+        off = setdiff(rv$listen_to, listen_to) # Remove old listeners
+      )
+      
+      rv$listen_to <- listen_to
+    }) |>
+      bindEvent(input$listen_to, ignoreNULL = FALSE)
+    
+    # Track the latest event
+    observeEvent(input$chart_click, {
+      rv$latest_event <- input$chart_click
+    })
+    observeEvent(input$chart_mouseover, {
+      rv$latest_event <- input$chart_mouseover
+    })
+    observeEvent(input$chart_mouseout, {
+      rv$latest_event <- input$chart_mouseout
+    })
+    observeEvent(input$chart_selectchanged, {
+      rv$latest_event <- input$chart_selectchanged
+    })
+    observeEvent(input$chart_legendselectchanged, {
+      rv$latest_event <- input$chart_legendselectchanged
+    })
+    
+    # Display the latest event
+    output$events <- renderPrint({
+      if (is.null(rv$latest_event)) "No events yet" else rv$latest_event
+    })
+  }
+)
+```

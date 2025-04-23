@@ -6,6 +6,8 @@ navbar:
   left:
   - text: Get Started
     href: articles/echartr.html
+  - text: Shiny
+    href: articles/shiny.html
   - text: Examples
     menu:
     - text: All Examples

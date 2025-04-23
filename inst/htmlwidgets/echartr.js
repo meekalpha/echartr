@@ -10,8 +10,8 @@ HTMLWidgets.widget({
     return {
 
       renderValue: function(x) {
-        if (!initialised) {
 
+        if (!initialised) {
           initialised = true;
 
           if (HTMLWidgets.shinyMode) {
@@ -20,9 +20,13 @@ HTMLWidgets.widget({
             });
           }
 
+        } else if (!x.update) {
+          chart.dispose();
         }
+
         chart = echarts.init(el);
         update_echartr(chart, x);
+
       },
 
       resize: function(width, height) {
@@ -47,8 +51,9 @@ function update_echartr(chart, event) {
     });
   }
   if (event.off !== null) {
+    // TODO: Support specifying handler
     event.off.forEach(x => {
-      chart.off(x.eventName);
+      chart.off(x);
     });
   }
   if (event.dispatch !== null) {
@@ -56,7 +61,7 @@ function update_echartr(chart, event) {
       chart.dispatchAction(x);
     });
   }
-  if (HTMLWidgets.shinyMode) {
+  if (HTMLWidgets.shinyMode && event.listen != null) {
     event.listen.forEach(x => {
       chart.on(x, e => {
         const shinyInput = chart._dom.id + "_" + x;

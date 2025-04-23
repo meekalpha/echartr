@@ -6,7 +6,7 @@
 #' @param listen character vector of events to include in Shiny input, any of [https://echarts.apache.org/en/api.html#events]
 #'
 #'   Event output is available as `input$<outputId>_<event>`. For mouse events, event data is limited.
-#'
+#' @param update logical, whether to update the existing chart rather than creating a new one
 #' @section Event listeners:
 #'
 #' [https://echarts.apache.org/en/api.html#events]
@@ -41,8 +41,9 @@ echartr <- function(
   option = list(),
   on = NULL,
   dispatch = NULL,
-  listen = character(),
-  elementId = NULL
+  listen = NULL,
+  elementId = NULL,
+  update = FALSE
 ) {
 
   if (!purrr::is_empty(listen) && !shiny::isRunning()) {
@@ -55,7 +56,8 @@ echartr <- function(
     on = on,
     off = NULL,
     dispatch = dispatch,
-    listen = as.list(listen)
+    listen = as.list(listen),
+    update = update
   )
 
   # create widget
@@ -120,14 +122,14 @@ updateEchartr <- function(
   on = NULL,
   off = NULL,
   dispatch = NULL,
-  listen = character()
+  listen = NULL
 ) {
   session$sendCustomMessage(
     sprintf("__echartr__%s", outputId),
     list(
       option = option,
       on = on,
-      off = off,
+      off = as.list(off),
       dispatch = dispatch,
       listen = as.list(listen)
     )
