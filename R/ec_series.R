@@ -30,6 +30,12 @@ ec_series_ <- function(spec) {
 
 #' Generate a list of series from a dataframe
 #'
+#' @param df A dataframe that can be referenced by all other arguments
+#' @param ... data dimensions and series attributes
+#'
+#' Unnamed arguments are used as data dimensions in the order provided.
+#' Named arguments should be valid series attributes.
+#'
 #' @seealso [ec_scatter()]
 #' @seealso [ec_line()]
 #' @seealso [ec_bar()]
@@ -45,10 +51,16 @@ ec_series <- function(df, ..., type) {
 
 #' Line series
 #'
+#' https://echarts.apache.org/en/option.html
+#'
+#' Adds option attribute `type = "line"` and will give an error if `y` is not provided.
+#'
 #' @param df A dataframe that can be referenced via ... arguments
 #' @param ... Series attributes
 #' @param x The x-axis variable
 #' @param y The y-axis variable
+#'
+#' @seealso [ec_series()]
 #'
 #' @examples
 #'
@@ -96,6 +108,7 @@ ec_line <- function(df, x, y, ...) {
 #' @param x The x-axis variable
 #' @param y The y-axis variable
 #' @param ... Additional arguments to be passed to the series
+#' @seealso [ec_series()]
 #' @examples
 #'
 #' # Including x-value in series data
@@ -136,6 +149,12 @@ ec_bar <- function(df, x, y, ...) {
 #'
 #' https://echarts.apache.org/en/option.html#series-pie
 #'
+#' @param df A dataframe that can be referenced by all other arguments
+#' @param value expression refering to `df` that gives the value to plot
+#' @param ... additional expressions providing series attributes and additional dimensions
+#'
+#' Unnamed arguments will be used as additional data dimensions in the order provided.
+#' @seealso [ec_series()]
 #' @examples
 #'
 #' data <- tibble::tibble(name = LETTERS[1:5], value = rnorm(5))
@@ -158,7 +177,8 @@ ec_pie <- function(df, value, ...) {
 #' Generates a single scatter series or list of series from a dataframe.
 #'
 #' https://echarts.apache.org/en/option.html#series-scatter
-#'
+#' @seealso [ec_series()]
+#' @param df
 #' @export
 ec_scatter <- function(df, x, y, ...) {
   if (missing(y)) {

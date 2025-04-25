@@ -6,6 +6,9 @@
 \usage{
 new_option(...)
 }
+\arguments{
+\item{...}{Name-value pairs, representing echart option attributes}
+}
 \description{
 Create a new echartr 'option' object
 }

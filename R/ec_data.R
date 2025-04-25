@@ -1,5 +1,5 @@
 
-#' Generate echarts `data` list-tree object from specification dataframe
+#' Generate echarts `data` list-tree object from specifying dataframe
 #' @keywords internal
 #' @importFrom rlang .data
 ec_data_ <- function(spec) {
@@ -25,8 +25,13 @@ ec_data_ <- function(spec) {
 }
 
 #' Generate echarts `data` list-tree object from a dataframe
-#' @param df data frame that can be referenced via ... arguments
-#' @param ... Expressions that can be evaluated to generate the list-tree
+#'
+#' @param df a dataframe that can be referenced by all other arguments
+#' @param ... data dimensions and attributes.
+#'
+#' Unnamed arguments are used as data dimensions.
+#' Named arguments should be valid data attributes.
+#'
 #' @export
 ec_data <- function(df, ...) {
   ec_data_(build_spec(df, ...))

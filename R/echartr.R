@@ -6,6 +6,7 @@
 #' @param listen character vector of events to include in Shiny input, any of [https://echarts.apache.org/en/api.html#events]
 #'
 #'   Event output is available as `input$<outputId>_<event>`. For mouse events, event data is limited.
+#' @param elementId id attribute of HTML element
 #' @param update logical, whether to update the existing chart rather than creating a new one
 #' @section Event listeners:
 #'

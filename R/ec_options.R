@@ -27,8 +27,11 @@ ec_options_ <- function(spec) {
 
 #' Generate a list of options from a dataframe
 #'
-#' @param df A dataframe that can be referenced via ... arguments
-#' @param ... Expressions that can be evaluated to generate the list-tree
+#' @param df a dataframe that can be referenced by all other arguments
+#' @param ... data dimensions and option attributes.
+#'
+#' Unnamed arguments are used as data dimensions.
+#' Named arguments should be valid option attributes.
 #'
 #' @export
 ec_options <- function(df, ...) {

@@ -6,6 +6,16 @@
 \usage{
 ec_series(df, ..., type)
 }
+\arguments{
+\item{df}{A dataframe that can be referenced by all other arguments}
+
+\item{...}{data dimensions and series attributes
+
+All arguments to \code{...} will be evaluated in terms of \code{df} and the local environment.
+
+Unnamed arguments are used as data dimensions in the order provided, whereas
+named arguments should be valid echarts series attributes for the chart type.}
+}
 \description{
 Generate a list of series from a dataframe
 }

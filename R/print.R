@@ -55,7 +55,6 @@ ec_clip.ec_object <- function(x) {
 }
 
 #' Print the javascript representation of an echartr list-tree object
-#' @exportS3Method
 print.ec_object <- function(x) {
   cat(ec_as_js(x))
   x

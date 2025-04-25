@@ -16,7 +16,10 @@ ec_line(df, x, y, ...)
 \item{...}{Series attributes}
 }
 \description{
-Line series
+https://echarts.apache.org/en/option.html
+}
+\details{
+Adds option attribute \code{type = "line"} and will give an error if \code{y} is not provided.
 }
 \examples{
 

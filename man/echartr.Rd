@@ -24,6 +24,8 @@ echartr(
 
 Event output is available as \verb{input$<outputId>_<event>}. For mouse events, event data is limited.}
 
+\item{elementId}{id attribute of HTML element}
+
 \item{update}{logical, whether to update the existing chart rather than creating a new one}
 }
 \description{

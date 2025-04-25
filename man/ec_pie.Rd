@@ -6,6 +6,15 @@
 \usage{
 ec_pie(df, value, ...)
 }
+\arguments{
+\item{df}{A dataframe that can be referenced by all other arguments}
+
+\item{value}{expression refering to \code{df} that gives the value to plot}
+
+\item{...}{additional expressions providing series attributes and additional dimensions
+
+Unnamed arguments will be used as additional data dimensions in the order provided.}
+}
 \description{
 https://echarts.apache.org/en/option.html#series-pie
 }
