@@ -1,16 +1,20 @@
 
-#' Evaluate quosures provided to ... for each for in df
+#' Evaluate quosures provided to ... for each row in a dataframe
 #' @keywords internal
 #' @param df A dataframe to evaluate the quosures against
 #' @param ... A combination of named arguments, which will each become a column
+#'
+#' Unnamed arguments are combined as lists into a column called "unnamed"
+#'
 #' @importFrom dplyr starts_with
 #' @importFrom rlang :=
 row_eval <- function(df, ...) {
-  args <- rlang::enquos(...)
+  args <- rlang::enquos(..., .check_assign = TRUE)
+  unnamed <- "echartr.unnamed.arg." # something long to avoid collisions with dot names
 
   for (i in seq_along(args)) {
     if (names(args)[[i]] == "") {
-      names(args)[i] <- paste0("unnamed", i)
+      names(args)[i] <- paste0(unnamed, i)
     }
   }
 
@@ -29,7 +33,7 @@ row_eval <- function(df, ...) {
   })
 
   unnamed_cols <- res |>
-    dplyr::select(starts_with("unnamed")) |>
+    dplyr::select(starts_with(unnamed)) |>
     colnames() |>
     rlang::syms()
 
