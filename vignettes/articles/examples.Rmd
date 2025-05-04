@@ -29,9 +29,9 @@ data <- tibble::tibble(
 )
 
 echartr(option = list(
-  xAxis = list(type = "category", data = data$x),
+  xAxis = list(type = "category"),
   yAxis = list(type = "value"),
-  series = ec_line(data, y = y)
+  series = ec_line(data, x, y)
 ))
 ```
 
@@ -46,9 +46,9 @@ data <- tibble::tibble(
 )
 
 echartr(option = list(
-  xAxis = list(type = "category", data = data$x),
+  xAxis = list(type = "category"),
   yAxis = list(type = "value"),
-  series = ec_line(data, y = y, smooth = TRUE)
+  series = ec_line(data, x, y, smooth = TRUE)
 ))
 ```
 ## Basic area chart
@@ -64,11 +64,10 @@ data <- tibble::tibble(
 echartr(option = list(
   xAxis = list(
     type = "category", 
-    boundaryGap = FALSE, 
-    data = data$x
+    boundaryGap = FALSE
   ),
   yAxis = list(type = "value"),
-  series = ec_line(data, y = y, areaStyle = list())
+  series = ec_line(data, x, y, areaStyle = list())
 ))
 ```
 
@@ -100,13 +99,11 @@ echartr(option = list(
   ),
   xAxis = list(
     type = "category", 
-    boundaryGap = FALSE,
-    data = unique(data$Day)
+    boundaryGap = FALSE
   ),
   yAxis = list(type = "value"),
   series = ec_line(
-    data, 
-    y = value, 
+    data, Day, value, 
     name = name,
     stack = "Total"
   )
@@ -148,13 +145,11 @@ echartr(option = list(
   grid = list(left = "3%", right = "4%", bottom = "3%", containLabel = TRUE),
   xAxis = list(
     type = "category", 
-    boundaryGap = FALSE,
-    data = unique(data$Day)
+    boundaryGap = FALSE
   ),
   yAxis = list(type = "value"),
   series = ec_line(
-    data, 
-    y = value, 
+    data, Day, value, 
     name = name,
     areaStyle = list(),
     emphasis = list(focus = "series"),
@@ -175,9 +170,9 @@ data <- tibble::tibble(
   y = c(120, 200, 150, 80, 70, 110, 130)
 )
 echartr(option = list(
-  xAxis = list(type = "category", data = data$x),
+  xAxis = list(type = "category"),
   yAxis = list(type = "value"),
-  series = ec_bar(data, y = y)
+  series = ec_bar(data, x, y)
 ))
 ```
 
@@ -194,26 +189,17 @@ data <- tibble::tibble(
 
 echartr(option = list(
   tooltip = list(
-    trigger = "axis",
-    axisPointer = list(
-      type = "shadow"
-    )
+    trigger = "axis", axisPointer = list(type = "shadow")
   ),
   grid = list(
-    left = "3%",
-    right = "4%",
-    bottom = "3%",
-    containLabel = TRUE
+    left = "3%", right = "4%", bottom = "3%", containLabel = TRUE
   ),
   xAxis = list(
     type = "category", 
-    data = data$x, 
-    axisTick = list(
-      alignWithLabel = TRUE
-    )
+    axisTick = list(alignWithLabel = TRUE)
   ),
   yAxis = list(type = "value"),
-  series = ec_bar(data, y = y, name = "Direct", barWidth = "60%"),
+  series = ec_bar(data, x, y, name = "Direct", barWidth = "60%"),
   axisPointer = list(
     type = "shadow"
   )
@@ -231,11 +217,9 @@ data <- tibble::tibble(
 )
 
 echartr(option = list(
-  xAxis = list(
-    type = "category", data = data$x
-  ),
+  xAxis = list(type = "category"),
   yAxis = list(type = "value"),
-  series = ec_bar(data, y = y, showBackground = TRUE, backgroundStyle = list(
+  series = ec_bar(data, x, y, showBackground = TRUE, backgroundStyle = list(
     color = "rgba(220, 220, 220, 0.8)" # TODO: Handle grDevices::rgb
   ))
 ))
@@ -273,13 +257,8 @@ data <- data |>
   tidyr::pivot_longer(Forest:Wetland)
 
 echartr(option = list(
-  tooltip = list(
-    trigger = "axis",
-    axisPointer = list(
-      type = "shadow"
-    )
-  ),
-  legend = list(data = unique(data$name)),
+  tooltip = list(trigger = "axis", axisPointer = list(type = "shadow")),
+  legend = list(show = TRUE),
   toolbox = list(
     show = TRUE,
     orient = "vertical",
@@ -293,12 +272,12 @@ echartr(option = list(
       saveAsImage = list(show = TRUE)
     )
   ),
-  xAxis = list(type = "category", data = unique(data$year)),
+  xAxis = list(type = "category"),
   yAxis = list(type = "value"),
   series = ec_bar(
     data, 
     label = label_option,
-    y = value, 
+    year, value, 
     name = name,
     barGap = 0L
   )
@@ -377,7 +356,7 @@ echartr(option = list(
   ),
   series = c(
     ec_scatter(data, 
-      y = date, 
+      date, 
       id = "label", 
       coordinateSystem = "calendar", 
       symbolSize = 0,
@@ -393,7 +372,7 @@ echartr(option = list(
       )
     ),
     ec_pie(data, 
-      value = value, 
+      value, 
       id = paste0("pie-", index), 
       center = date, 
       coordinateSystem = "calendar",
@@ -402,6 +381,4 @@ echartr(option = list(
     )
   )
 ))
-
-
 ```

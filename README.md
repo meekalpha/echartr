@@ -61,8 +61,8 @@ echartr(option = list(
                       
     # Data dimensions and series attributes are provided as expressions that can 
     # be evaluated for each row to build multiple series
-    x = Petal.Length,
-    y = Petal.Width,
+    Petal.Length, # x
+    Petal.Width, # y
     
     name = as.character(Species),
     symbol = if (Species == "versicolor") "circle" else "emptyCircle",

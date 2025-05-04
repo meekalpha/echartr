@@ -14,7 +14,7 @@ test_that("Attributes with a single value give a single series", {
   expect_identical(
     unclass(ec_series(data, x, name = name, type = "bar")),
     list(
-      list(type = "bar", name = "My series", data = data$x)
+      list(name = "My series", type = "bar", data = data$x)
     )
   )
 })
@@ -24,8 +24,8 @@ test_that("Attributes with a multiple values give multiple series", {
   expect_identical(
     unclass(ec_series(data, x, name = name, type = "bar")),
     list(
-      list(type = "bar", name = "Series 1", data = seq(1L, 50L, 2L)),
-      list(type = "bar", name = "Series 2", data = seq(2L, 50L, 2L))
+      list(name = "Series 1", type = "bar", data = seq(1L, 50L, 2L)),
+      list(name = "Series 2", type = "bar", data = seq(2L, 50L, 2L))
     )
   )
 })
@@ -41,10 +41,10 @@ test_that("Multiple attributes give a series for each combination", {
   expect_identical(
     unclass(ec_series(data, x, name = name, type = type)),
     list(
-      list(type = "bar", name = "Series 1", data = seq(1L, 60L, 4L)),
-      list(type = "scatter", name = "Series 2", data = seq(2L, 60L, 4L)),
-      list(type = "pie", name = "Series 1", data = seq(3L, 60L, 4L)),
-      list(type = "line", name = "Series 2", data = seq(4L, 60L, 4L))
+      list(name = "Series 1", type = "bar", data = seq(1L, 60L, 4L)),
+      list(name = "Series 2", type = "scatter", data = seq(2L, 60L, 4L)),
+      list(name = "Series 1", type = "pie", data = seq(3L, 60L, 4L)),
+      list(name = "Series 2", type = "line", data = seq(4L, 60L, 4L))
     )
   )
 })
@@ -62,10 +62,10 @@ test_that("Series can be split on an styling", {
       data, x, name = name, label = list(fontSize = label_size), type = "bar"
     )),
     list(
-      list(type = "bar", name = "Series 1", label = list(fontSize = 11L), data = seq(1L, 60L, 4L)),
-      list(type = "bar", name = "Series 2", label = list(fontSize = 12L),  data = seq(2L, 60L, 4L)),
-      list(type = "bar", name = "Series 1", label = list(fontSize = 13L),  data = seq(3L, 60L, 4L)),
-      list(type = "bar", name = "Series 2", label = list(fontSize = 14L),  data = seq(4L, 60L, 4L))
+      list(name = "Series 1", label = list(fontSize = 11L), type = "bar", data = seq(1L, 60L, 4L)),
+      list(name = "Series 2", label = list(fontSize = 12L), type = "bar", data = seq(2L, 60L, 4L)),
+      list(name = "Series 1", label = list(fontSize = 13L), type = "bar", data = seq(3L, 60L, 4L)),
+      list(name = "Series 2", label = list(fontSize = 14L), type = "bar", data = seq(4L, 60L, 4L))
     )
   )
 })

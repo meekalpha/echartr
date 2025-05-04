@@ -4,12 +4,10 @@
 \alias{ec_pie}
 \title{Pie series}
 \usage{
-ec_pie(df, value, ...)
+ec_pie(df, ...)
 }
 \arguments{
 \item{df}{A dataframe that can be referenced by all other arguments}
-
-\item{value}{expression refering to \code{df} that gives the value to plot}
 
 \item{...}{additional expressions providing series attributes and additional dimensions
 
@@ -27,4 +25,7 @@ echartr(option = list(
   series = series
 ))
 
+}
+\seealso{
+\code{\link[=ec_series]{ec_series()}}
 }

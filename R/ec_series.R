@@ -49,11 +49,11 @@ ec_series_ <- function(spec) {
 #' @seealso [ec_pie()]
 #'
 #' @export
-ec_series <- function(df, ..., type) {
-  if (missing(type)) {
+ec_series <- function(df, ...) {
+  if (!"type" %in% names(rlang::enexprs(...))) {
     stop("`type` argument is required")
   }
-  structure(ec_series_(build_spec(df, type = type, ...)), class = "ec_object")
+  structure(ec_series_(build_spec(df, ...)), class = "ec_object")
 }
 
 #' Line series
@@ -84,7 +84,7 @@ ec_series <- function(df, ..., type) {
 #'
 #' # Including x-value in axis data - requires category type axis
 #' data <- tibble::tibble(x = 1:5, y = rnorm(5))
-#' series <- ec_line(data, y = y)
+#' series <- ec_line(data, y)
 #'
 #' echartr(option = list(
 #'   xAxis = list(type = "category", data = data$x),
@@ -94,15 +94,11 @@ ec_series <- function(df, ..., type) {
 #' ))
 #'
 #' @export
-ec_line <- function(df, x, y, ...) {
-  if (missing(y)) {
-    stop("`y` argument is required")
+ec_line <- function(df, ...) {
+  if ("type" %in% names(rlang::enexprs(...))) {
+    stop("`type` argument should not be specied with `ec_line()`")
   }
-  if (missing(x)) {
-    ec_series(df, type = "line", !!rlang::enexpr(y), ...)
-  } else {
-    ec_series(df, type = "line", !!rlang::enexpr(x), !!rlang::enexpr(y), ...)
-  }
+  ec_series(df, type = "line", ...)
 }
 
 #' Bar series
@@ -131,7 +127,7 @@ ec_line <- function(df, x, y, ...) {
 #'
 #' # Including x-value in axis data - requires category type axis
 #' data <- tibble::tibble(x = 1:5, y = rnorm(5))
-#' series <- ec_bar(data, y = y)
+#' series <- ec_bar(data, y)
 #'
 #' echartr(option = list(
 #'   xAxis = list(type = "category", data = data$x),
@@ -141,15 +137,11 @@ ec_line <- function(df, x, y, ...) {
 #' ))
 #'
 #' @export
-ec_bar <- function(df, x, y, ...) {
-  if (missing(y)) {
-    stop("`y` argument is required")
+ec_bar <- function(df, ...) {
+  if ("type" %in% names(rlang::enexprs(...))) {
+    stop("`type` argument should not be specied with `ec_bar()`")
   }
-  if (missing(x)) {
-    ec_series(df, type = "bar", !!rlang::enexpr(y), ...)
-  } else {
-    ec_series(df, type = "bar", !!rlang::enexpr(x), !!rlang::enexpr(y), ...)
-  }
+  ec_series(df, type = "bar", ...)
 }
 
 #' Pie series
@@ -157,7 +149,6 @@ ec_bar <- function(df, x, y, ...) {
 #' https://echarts.apache.org/en/option.html#series-pie
 #'
 #' @param df A dataframe that can be referenced by all other arguments
-#' @param value expression refering to `df` that gives the value to plot
 #' @param ... additional expressions providing series attributes and additional dimensions
 #'
 #' Unnamed arguments will be used as additional data dimensions in the order provided.
@@ -172,11 +163,11 @@ ec_bar <- function(df, x, y, ...) {
 #' ))
 #'
 #' @export
-ec_pie <- function(df, value, ...) {
-  if (missing(value)) {
-    stop("`value` argument is required")
+ec_pie <- function(df, ...) {
+  if ("type" %in% names(rlang::enexprs(...))) {
+    stop("`type` argument should not be specied with `ec_pie()`")
   }
-  ec_series(df, type = "pie", !!rlang::enexpr(value), ...)
+  ec_series(df, type = "pie", ...)
 }
 
 #' Scatter series
@@ -185,15 +176,11 @@ ec_pie <- function(df, value, ...) {
 #'
 #' https://echarts.apache.org/en/option.html#series-scatter
 #' @seealso [ec_series()]
-#' @param df
+#' @param df A dataframe that can be referenced by all other arguments
 #' @export
-ec_scatter <- function(df, x, y, ...) {
-  if (missing(y)) {
-    stop("`y` argument is required")
+ec_scatter <- function(df, ...) {
+  if ("type" %in% names(rlang::enexprs(...))) {
+    stop("`type` argument should not be specied with `ec_scatter()`")
   }
-  if (missing(x)) {
-    ec_series(df, type = "scatter", !!rlang::enexpr(y), ...)
-  } else {
-    ec_series(df, type = "scatter", !!rlang::enexpr(x), !!rlang::enexpr(y), ...)
-  }
+  ec_series(df, type = "scatter", ...)
 }

@@ -1,10 +1,9 @@
 #' Move one level 'deeper' into the specification
 #' TODO: support unnamed stuff inside row (maybe)
 #' @keywords internal
-#' @importFrom rlang .data
 spec_zoom <- function(spec, col) {
   res <- spec |>
-    dplyr::select(.data$datapoint)
+    dplyr::select("datapoint")
 
   if (col %in% colnames(spec)) {
     res <- spec |>

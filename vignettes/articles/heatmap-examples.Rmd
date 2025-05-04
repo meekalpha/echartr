@@ -30,12 +30,10 @@ data$value <- floor(runif(nrow(data), 0, 10)) |>
 echartr(option = list(
   xAxis = list(
     type = "category", 
-    data = unique(data$hours),
     splitArea = list(show = TRUE)
   ),
   yAxis = list(
     type = "category", 
-    data = unique(data$days),
     splitArea = list(show = TRUE)
   ),
   visualMap = list(
@@ -51,3 +49,4 @@ echartr(option = list(
   )
 ))
 ```
+

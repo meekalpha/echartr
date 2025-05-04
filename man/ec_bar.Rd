@@ -4,16 +4,16 @@
 \alias{ec_bar}
 \title{Bar series}
 \usage{
-ec_bar(df, x, y, ...)
+ec_bar(df, ...)
 }
 \arguments{
 \item{df}{A dataframe that can be referenced via ... arguments}
 
+\item{...}{Additional arguments to be passed to the series}
+
 \item{x}{The x-axis variable}
 
 \item{y}{The y-axis variable}
-
-\item{...}{Additional arguments to be passed to the series}
 }
 \description{
 https://echarts.apache.org/en/option.html#series-bar
@@ -36,7 +36,7 @@ echartr(option = list(
 
 # Including x-value in axis data - requires category type axis
 data <- tibble::tibble(x = 1:5, y = rnorm(5))
-series <- ec_bar(data, y = y)
+series <- ec_bar(data, y)
 
 echartr(option = list(
   xAxis = list(type = "category", data = data$x),
@@ -45,4 +45,7 @@ echartr(option = list(
   series = series
 ))
 
+}
+\seealso{
+\code{\link[=ec_series]{ec_series()}}
 }

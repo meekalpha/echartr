@@ -2,11 +2,11 @@
 % Please edit documentation in R/ec_data.R
 \name{ec_data_}
 \alias{ec_data_}
-\title{Generate echarts \code{data} list-tree object from specification dataframe}
+\title{Generate echarts \code{data} list-tree object from specifying dataframe}
 \usage{
 ec_data_(spec)
 }
 \description{
-Generate echarts \code{data} list-tree object from specification dataframe
+Generate echarts \code{data} list-tree object from specifying dataframe
 }
 \keyword{internal}

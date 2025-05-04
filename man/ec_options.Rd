@@ -7,9 +7,12 @@
 ec_options(df, ...)
 }
 \arguments{
-\item{df}{A dataframe that can be referenced via ... arguments}
+\item{df}{a dataframe that can be referenced by all other arguments}
 
-\item{...}{Expressions that can be evaluated to generate the list-tree}
+\item{...}{data dimensions and option attributes.
+
+Unnamed arguments are used as data dimensions.
+Named arguments should be valid option attributes.}
 }
 \description{
 Generate a list of options from a dataframe

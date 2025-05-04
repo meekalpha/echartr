@@ -4,16 +4,16 @@
 \alias{ec_line}
 \title{Line series}
 \usage{
-ec_line(df, x, y, ...)
+ec_line(df, ...)
 }
 \arguments{
 \item{df}{A dataframe that can be referenced via ... arguments}
 
+\item{...}{Series attributes}
+
 \item{x}{The x-axis variable}
 
 \item{y}{The y-axis variable}
-
-\item{...}{Series attributes}
 }
 \description{
 https://echarts.apache.org/en/option.html
@@ -36,7 +36,7 @@ echartr(option = list(
 
 # Including x-value in axis data - requires category type axis
 data <- tibble::tibble(x = 1:5, y = rnorm(5))
-series <- ec_line(data, y = y)
+series <- ec_line(data, y)
 
 echartr(option = list(
   xAxis = list(type = "category", data = data$x),
@@ -45,4 +45,7 @@ echartr(option = list(
   series = series
 ))
 
+}
+\seealso{
+\code{\link[=ec_series]{ec_series()}}
 }

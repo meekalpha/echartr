@@ -4,11 +4,17 @@
 \alias{ec_scatter}
 \title{Scatter series}
 \usage{
-ec_scatter(df, x, y, ...)
+ec_scatter(df, ...)
+}
+\arguments{
+\item{df}{A dataframe that can be referenced by all other arguments}
 }
 \description{
 Generates a single scatter series or list of series from a dataframe.
 }
 \details{
 https://echarts.apache.org/en/option.html#series-scatter
+}
+\seealso{
+\code{\link[=ec_series]{ec_series()}}
 }

@@ -2,16 +2,18 @@
 % Please edit documentation in R/utils.R
 \name{row_eval}
 \alias{row_eval}
-\title{Evaluate quosures provided to ... for each for in df}
+\title{Evaluate quosures provided to ... for each row in a dataframe}
 \usage{
 row_eval(df, ...)
 }
 \arguments{
 \item{df}{A dataframe to evaluate the quosures against}
 
-\item{...}{A combination of named arguments, which will each become a column}
+\item{...}{A combination of named arguments, which will each become a column
+
+Unnamed arguments are combined as lists into a column called "unnamed"}
 }
 \description{
-Evaluate quosures provided to ... for each for in df
+Evaluate quosures provided to ... for each row in a dataframe
 }
 \keyword{internal}
