@@ -26,7 +26,7 @@ build_spec <- function(...) {
   # TODO: handle NULL args..
 
   spec <- row_eval(...) |>
-    dplyr::rename(datapoint = .data$unnamed)
+    dplyr::rename(datapoint = "unnamed")
 
   if (length(spec$datapoint) == 0 || length(spec$datapoint[[1]]) == 0) {
     warning("No data dimensions specified")

@@ -19,7 +19,7 @@ ec_data_ <- function(spec) {
   } else {
     spec |>
       dplyr::mutate(value = .data$datapoint) |>
-      dplyr::select(-.data$datapoint) |>
+      dplyr::select(-"datapoint") |>
       purrr::transpose()
   }
 }

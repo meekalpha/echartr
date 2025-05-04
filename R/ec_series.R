@@ -22,10 +22,17 @@ ec_series_ <- function(spec) {
     dplyr::bind_rows()
 
   # Avoid any reordering of grouping columns
-  spec |>
-    dplyr::summarise(.by = all_of(serie_cols)) |> # Using .by avoids re-ordering
-    dplyr::left_join(series, by = serie_cols) |>
-    purrr::transpose()
+  if (purrr::is_empty(serie_cols)) {
+    spec |>
+      dplyr::summarise(.by = all_of(serie_cols)) |> # Using .by avoids re-ordering
+      dplyr::bind_cols(series) |>
+      purrr::transpose()
+  } else {
+    spec |>
+      dplyr::summarise(.by = all_of(serie_cols)) |> # Using .by avoids re-ordering
+      dplyr::left_join(series, by = serie_cols) |>
+      purrr::transpose()
+  }
 }
 
 #' Generate a list of series from a dataframe

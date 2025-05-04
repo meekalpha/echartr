@@ -19,10 +19,17 @@ ec_options_ <- function(spec) {
     dplyr::bind_rows()
 
   # Avoid any reordering of grouping columns
-  spec |>
-    dplyr::summarise(.by = all_of(option_cols)) |> # Using .by avoids re-ordering
-    dplyr::left_join(series, by = option_cols) |>
-    purrr::transpose()
+  if (purrr::is_empty(option_cols)) {
+    spec |>
+      dplyr::summarise(.by = all_of(option_cols)) |> # Using .by avoids re-ordering
+      dplyr::bind_cols(series) |>
+      purrr::transpose()
+  } else {
+    spec |>
+      dplyr::summarise(.by = all_of(option_cols)) |> # Using .by avoids re-ordering
+      dplyr::left_join(series, by = option_cols) |>
+      purrr::transpose()
+  }
 }
 
 #' Generate a list of options from a dataframe

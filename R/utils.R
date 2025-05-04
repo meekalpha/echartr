@@ -18,12 +18,12 @@ row_eval <- function(df, ...) {
     }
   }
 
+  # TODO: Could possibly be achieved more simply with dplyr::rowwise()
   res <- purrr::map_dfr(seq_len(nrow(df)), function(i) {
-    row <- as.list(df[i, ])
+    row <- df[i, ]
     purrr::imap_dfc(args, function(arg, name) {
       value <- rlang::eval_tidy(
-        rlang::get_expr(arg),
-        env = list2env(row, parent = rlang::get_env(arg))
+        rlang::get_expr(arg), data = row
       )
       tibble::tibble(
         .name_repair = "minimal",
