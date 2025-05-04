@@ -105,10 +105,11 @@ renderEchartr <- function(expr, env = parent.frame(), quoted = FALSE) {
 #'
 #' @param session The Shiny session object. Defaults to the current Shiny session.
 #' @param outputId The Shiny output ID of the `echartr` instance.
-#' @param option list-tree representation of echart option argument, see https://echarts.apache.org/en/option.html
-#' @param on list of event listeners to register, see https://echarts.apache.org/en/api.html#echartsInstance.on
-#' @param off list of event listeners to de-register, see https://echarts.apache.org/en/api.html#echartsInstance.off
-#' @param listen character vector of events to include in Shiny input, any of https://echarts.apache.org/en/api.html#events
+#' @param option list-tree representation of echart option argument, see [https://echarts.apache.org/en/option.html]
+#' @param on list of event listeners to register, see [https://echarts.apache.org/en/api.html#echartsInstance.on]
+#' @param off list of event listeners to de-register, see [https://echarts.apache.org/en/api.html#echartsInstance.off]
+#' @param dispatch list of actions to immediately dispatch, see [https://echarts.apache.org/en/api.html#echartsInstance.dispatchAction]
+#' @param listen character vector of events to include in Shiny input, any of [https://echarts.apache.org/en/api.html#events]
 #'
 #'  Event output is available as `input$<outputId>_<event>`. For mouse events, event data is limited.
 #'

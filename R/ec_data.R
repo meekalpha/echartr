@@ -1,5 +1,6 @@
 
 #' Generate echarts `data` list-tree object from specifying dataframe
+#' @param spec specification data frame
 #' @keywords internal
 #' @importFrom rlang .data
 ec_data_ <- function(spec) {

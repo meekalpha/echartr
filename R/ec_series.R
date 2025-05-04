@@ -64,8 +64,6 @@ ec_series <- function(df, ...) {
 #'
 #' @param df A dataframe that can be referenced via ... arguments
 #' @param ... Series attributes
-#' @param x The x-axis variable
-#' @param y The y-axis variable
 #'
 #' @seealso [ec_series()]
 #'
@@ -108,8 +106,6 @@ ec_line <- function(df, ...) {
 #' Generates a single bar series or list of series from a dataframe.
 #'
 #' @param df A dataframe that can be referenced via ... arguments
-#' @param x The x-axis variable
-#' @param y The y-axis variable
 #' @param ... Additional arguments to be passed to the series
 #' @seealso [ec_series()]
 #' @examples
@@ -152,6 +148,7 @@ ec_bar <- function(df, ...) {
 #' @param ... additional expressions providing series attributes and additional dimensions
 #'
 #' Unnamed arguments will be used as additional data dimensions in the order provided.
+#'
 #' @seealso [ec_series()]
 #' @examples
 #'
@@ -177,6 +174,10 @@ ec_pie <- function(df, ...) {
 #' https://echarts.apache.org/en/option.html#series-scatter
 #' @seealso [ec_series()]
 #' @param df A dataframe that can be referenced by all other arguments
+#' @param ... additional expressions providing series attributes and additional dimensions
+#'
+#' Unnamed arguments will be used as additional data dimensions in the order provided.
+#'
 #' @export
 ec_scatter <- function(df, ...) {
   if ("type" %in% names(rlang::enexprs(...))) {

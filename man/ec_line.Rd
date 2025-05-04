@@ -10,10 +10,6 @@ ec_line(df, ...)
 \item{df}{A dataframe that can be referenced via ... arguments}
 
 \item{...}{Series attributes}
-
-\item{x}{The x-axis variable}
-
-\item{y}{The y-axis variable}
 }
 \description{
 https://echarts.apache.org/en/option.html

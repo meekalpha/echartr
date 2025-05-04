@@ -10,10 +10,6 @@ ec_bar(df, ...)
 \item{df}{A dataframe that can be referenced via ... arguments}
 
 \item{...}{Additional arguments to be passed to the series}
-
-\item{x}{The x-axis variable}
-
-\item{y}{The y-axis variable}
 }
 \description{
 https://echarts.apache.org/en/option.html#series-bar

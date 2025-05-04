@@ -6,6 +6,9 @@
 \usage{
 \method{print}{ec_object}(x)
 }
+\arguments{
+\item{x}{S3 object with class "ec_object"}
+}
 \description{
 Print the javascript representation of an echartr list-tree object
 }

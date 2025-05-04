@@ -6,6 +6,9 @@
 \usage{
 ec_options_(spec)
 }
+\arguments{
+\item{spec}{specification data frame}
+}
 \description{
 Create a list of options based on specification data frame
 }

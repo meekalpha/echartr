@@ -8,6 +8,10 @@ ec_scatter(df, ...)
 }
 \arguments{
 \item{df}{A dataframe that can be referenced by all other arguments}
+
+\item{...}{additional expressions providing series attributes and additional dimensions
+
+Unnamed arguments will be used as additional data dimensions in the order provided.}
 }
 \description{
 Generates a single scatter series or list of series from a dataframe.

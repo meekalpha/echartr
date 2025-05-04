@@ -6,6 +6,9 @@
 \usage{
 ec_data_(spec)
 }
+\arguments{
+\item{spec}{specification data frame}
+}
 \description{
 Generate echarts \code{data} list-tree object from specifying dataframe
 }

@@ -2,13 +2,23 @@
 % Please edit documentation in R/build_spec.R
 \name{spec_zoom}
 \alias{spec_zoom}
-\title{Move one level 'deeper' into the specification
-TODO: support unnamed stuff inside row (maybe)}
+\title{Move one level 'deeper' into the specification}
 \usage{
 spec_zoom(spec, col)
 }
+\arguments{
+\item{spec}{specification data frame}
+
+\item{col}{character, column name to zoom in on}
+}
 \description{
 Move one level 'deeper' into the specification
-TODO: support unnamed stuff inside row (maybe)
 }
+\keyword{(maybe)}
+\keyword{TODO:}
+\keyword{inside}
 \keyword{internal}
+\keyword{row}
+\keyword{stuff}
+\keyword{support}
+\keyword{unnamed}

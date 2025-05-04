@@ -1,6 +1,8 @@
 #' Move one level 'deeper' into the specification
-#' TODO: support unnamed stuff inside row (maybe)
+#' @param spec specification data frame
+#' @param col character, column name to zoom in on
 #' @keywords internal
+#' TODO: support unnamed stuff inside row (maybe)
 spec_zoom <- function(spec, col) {
   res <- spec |>
     dplyr::select("datapoint")
