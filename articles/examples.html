@@ -35,6 +35,7 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-examples" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Examples</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-examples">
 <li><a class="dropdown-item" href="../articles/examples.html">All Examples</a></li>
+    <li><a class="dropdown-item" href="../articles/examples/heatmap-examples.html">Heatmap</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../reference/">Reference</a></li>
@@ -81,12 +82,12 @@
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/echartr.html">echartr</a></span><span class="op">(</span>option <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>  xAxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"category"</span>, data <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">x</span><span class="op">)</span>,</span>
+<span>  xAxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"category"</span><span class="op">)</span>,</span>
 <span>  yAxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"value"</span><span class="op">)</span>,</span>
-<span>  series <span class="op">=</span> <span class="fu"><a href="../reference/ec_line.html">ec_line</a></span><span class="op">(</span><span class="va">data</span>, y <span class="op">=</span> <span class="va">y</span><span class="op">)</span></span>
+<span>  series <span class="op">=</span> <span class="fu"><a href="../reference/ec_line.html">ec_line</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">x</span>, <span class="va">y</span><span class="op">)</span></span>
 <span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="echartr html-widget html-fill-item" id="htmlwidget-ac96cb3ee4656e2e9ec3" style="width:700px;height:432.632880098888px;"></div>
-<script type="application/json" data-for="htmlwidget-ac96cb3ee4656e2e9ec3">{"x":{"option":{"xAxis":{"type":"category","data":["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]},"yAxis":{"type":"value"},"series":[{"type":"line","data":[150,230,224,218,135,147,260]}]},"on":null,"off":null,"dispatch":null,"listen":[],"update":false},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-ac96cb3ee4656e2e9ec3">{"x":{"option":{"xAxis":{"type":"category"},"yAxis":{"type":"value"},"series":[{"type":"line","data":[["Mon",150],["Tue",230],["Wed",224],["Thu",218],["Fri",135],["Sat",147],["Sun",260]]}]},"on":null,"off":null,"dispatch":null,"listen":[],"update":false},"evals":[],"jsHooks":[]}</script>
 </div>
 <div class="section level3">
 <h3 id="smoothed-line-chart">Smoothed line chart<a class="anchor" aria-label="anchor" href="#smoothed-line-chart"></a>
@@ -99,12 +100,12 @@
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/echartr.html">echartr</a></span><span class="op">(</span>option <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>  xAxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"category"</span>, data <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">x</span><span class="op">)</span>,</span>
+<span>  xAxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"category"</span><span class="op">)</span>,</span>
 <span>  yAxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"value"</span><span class="op">)</span>,</span>
-<span>  series <span class="op">=</span> <span class="fu"><a href="../reference/ec_line.html">ec_line</a></span><span class="op">(</span><span class="va">data</span>, y <span class="op">=</span> <span class="va">y</span>, smooth <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  series <span class="op">=</span> <span class="fu"><a href="../reference/ec_line.html">ec_line</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">x</span>, <span class="va">y</span>, smooth <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="echartr html-widget html-fill-item" id="htmlwidget-e5c8c404fe174e4c81bd" style="width:700px;height:432.632880098888px;"></div>
-<script type="application/json" data-for="htmlwidget-e5c8c404fe174e4c81bd">{"x":{"option":{"xAxis":{"type":"category","data":["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]},"yAxis":{"type":"value"},"series":[{"type":"line","smooth":true,"data":[820,932,901,934,1290,1330,1320]}]},"on":null,"off":null,"dispatch":null,"listen":[],"update":false},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-e5c8c404fe174e4c81bd">{"x":{"option":{"xAxis":{"type":"category"},"yAxis":{"type":"value"},"series":[{"type":"line","smooth":true,"data":[["Mon",820],["Tue",932],["Wed",901],["Thu",934],["Fri",1290],["Sat",1330],["Sun",1320]]}]},"on":null,"off":null,"dispatch":null,"listen":[],"update":false},"evals":[],"jsHooks":[]}</script>
 </div>
 <div class="section level3">
 <h3 id="basic-area-chart">Basic area chart<a class="anchor" aria-label="anchor" href="#basic-area-chart"></a>
@@ -119,14 +120,13 @@
 <span><span class="fu"><a href="../reference/echartr.html">echartr</a></span><span class="op">(</span>option <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>  xAxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>    type <span class="op">=</span> <span class="st">"category"</span>, </span>
-<span>    boundaryGap <span class="op">=</span> <span class="cn">FALSE</span>, </span>
-<span>    data <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">x</span></span>
+<span>    boundaryGap <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span>  <span class="op">)</span>,</span>
 <span>  yAxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"value"</span><span class="op">)</span>,</span>
-<span>  series <span class="op">=</span> <span class="fu"><a href="../reference/ec_line.html">ec_line</a></span><span class="op">(</span><span class="va">data</span>, y <span class="op">=</span> <span class="va">y</span>, areaStyle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span>  series <span class="op">=</span> <span class="fu"><a href="../reference/ec_line.html">ec_line</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">x</span>, <span class="va">y</span>, areaStyle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="echartr html-widget html-fill-item" id="htmlwidget-36aa3d2a04d42bbc2145" style="width:700px;height:432.632880098888px;"></div>
-<script type="application/json" data-for="htmlwidget-36aa3d2a04d42bbc2145">{"x":{"option":{"xAxis":{"type":"category","boundaryGap":false,"data":["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]},"yAxis":{"type":"value"},"series":[{"type":"line","areaStyle":[],"data":[820,932,901,934,1290,1330,1320]}]},"on":null,"off":null,"dispatch":null,"listen":[],"update":false},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-36aa3d2a04d42bbc2145">{"x":{"option":{"xAxis":{"type":"category","boundaryGap":false},"yAxis":{"type":"value"},"series":[{"type":"line","areaStyle":[],"data":[["Mon",820],["Tue",932],["Wed",901],["Thu",934],["Fri",1290],["Sat",1330],["Sun",1320]]}]},"on":null,"off":null,"dispatch":null,"listen":[],"update":false},"evals":[],"jsHooks":[]}</script>
 </div>
 <div class="section level3">
 <h3 id="stacked-line-chart">Stacked Line Chart<a class="anchor" aria-label="anchor" href="#stacked-line-chart"></a>
@@ -156,19 +156,17 @@
 <span>  <span class="op">)</span>,</span>
 <span>  xAxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>    type <span class="op">=</span> <span class="st">"category"</span>, </span>
-<span>    boundaryGap <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>    data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">Day</span><span class="op">)</span></span>
+<span>    boundaryGap <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span>  <span class="op">)</span>,</span>
 <span>  yAxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"value"</span><span class="op">)</span>,</span>
 <span>  series <span class="op">=</span> <span class="fu"><a href="../reference/ec_line.html">ec_line</a></span><span class="op">(</span></span>
-<span>    <span class="va">data</span>, </span>
-<span>    y <span class="op">=</span> <span class="va">value</span>, </span>
+<span>    <span class="va">data</span>, <span class="va">Day</span>, <span class="va">value</span>, </span>
 <span>    name <span class="op">=</span> <span class="va">name</span>,</span>
 <span>    stack <span class="op">=</span> <span class="st">"Total"</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="echartr html-widget html-fill-item" id="htmlwidget-febe03efa1a2d8d52a86" style="width:700px;height:432.632880098888px;"></div>
-<script type="application/json" data-for="htmlwidget-febe03efa1a2d8d52a86">{"x":{"option":{"title":{"text":"Stacked Line"},"tooltip":{"trigger":"axis"},"legend":{"data":["Email","Union Ads","Video Ads","Direct","Search Engine"]},"grid":{"left":"3%","right":"4%","bottom":"3%","containLabel":true},"toolbox":{"feature":{"saveAsImage":[]}},"xAxis":{"type":"category","boundaryGap":false,"data":["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]},"yAxis":{"type":"value"},"series":[{"type":"line","name":"Email","stack":"Total","data":[120,132,101,134,90,230,210]},{"type":"line","name":"Union Ads","stack":"Total","data":[220,182,191,234,290,330,310]},{"type":"line","name":"Video Ads","stack":"Total","data":[150,232,201,154,190,330,410]},{"type":"line","name":"Direct","stack":"Total","data":[320,332,301,334,390,330,320]},{"type":"line","name":"Search Engine","stack":"Total","data":[820,932,901,934,1290,1330,1320]}]},"on":null,"off":null,"dispatch":null,"listen":[],"update":false},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-febe03efa1a2d8d52a86">{"x":{"option":{"title":{"text":"Stacked Line"},"tooltip":{"trigger":"axis"},"legend":{"data":["Email","Union Ads","Video Ads","Direct","Search Engine"]},"grid":{"left":"3%","right":"4%","bottom":"3%","containLabel":true},"toolbox":{"feature":{"saveAsImage":[]}},"xAxis":{"type":"category","boundaryGap":false},"yAxis":{"type":"value"},"series":[{"type":"line","name":"Email","stack":"Total","data":[["Mon",120],["Tue",132],["Wed",101],["Thu",134],["Fri",90],["Sat",230],["Sun",210]]},{"type":"line","name":"Union Ads","stack":"Total","data":[["Mon",220],["Tue",182],["Wed",191],["Thu",234],["Fri",290],["Sat",330],["Sun",310]]},{"type":"line","name":"Video Ads","stack":"Total","data":[["Mon",150],["Tue",232],["Wed",201],["Thu",154],["Fri",190],["Sat",330],["Sun",410]]},{"type":"line","name":"Direct","stack":"Total","data":[["Mon",320],["Tue",332],["Wed",301],["Thu",334],["Fri",390],["Sat",330],["Sun",320]]},{"type":"line","name":"Search Engine","stack":"Total","data":[["Mon",820],["Tue",932],["Wed",901],["Thu",934],["Fri",1290],["Sat",1330],["Sun",1320]]}]},"on":null,"off":null,"dispatch":null,"listen":[],"update":false},"evals":[],"jsHooks":[]}</script>
 </div>
 <div class="section level3">
 <h3 id="stacked-area-chart">Stacked Area Chart<a class="anchor" aria-label="anchor" href="#stacked-area-chart"></a>
@@ -206,13 +204,11 @@
 <span>  grid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>left <span class="op">=</span> <span class="st">"3%"</span>, right <span class="op">=</span> <span class="st">"4%"</span>, bottom <span class="op">=</span> <span class="st">"3%"</span>, containLabel <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>  xAxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>    type <span class="op">=</span> <span class="st">"category"</span>, </span>
-<span>    boundaryGap <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>    data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">Day</span><span class="op">)</span></span>
+<span>    boundaryGap <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span>  <span class="op">)</span>,</span>
 <span>  yAxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"value"</span><span class="op">)</span>,</span>
 <span>  series <span class="op">=</span> <span class="fu"><a href="../reference/ec_line.html">ec_line</a></span><span class="op">(</span></span>
-<span>    <span class="va">data</span>, </span>
-<span>    y <span class="op">=</span> <span class="va">value</span>, </span>
+<span>    <span class="va">data</span>, <span class="va">Day</span>, <span class="va">value</span>, </span>
 <span>    name <span class="op">=</span> <span class="va">name</span>,</span>
 <span>    areaStyle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>    emphasis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>focus <span class="op">=</span> <span class="st">"series"</span><span class="op">)</span>,</span>
@@ -221,7 +217,7 @@
 <span>  <span class="op">)</span></span>
 <span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="echartr html-widget html-fill-item" id="htmlwidget-1fb4450895fe099f74a1" style="width:700px;height:432.632880098888px;"></div>
-<script type="application/json" data-for="htmlwidget-1fb4450895fe099f74a1">{"x":{"option":{"title":{"text":"Stacked Area Chart"},"tooltip":{"trigger":"axis","axisPointer":{"type":"cross","label":{"backgroundColor":"#6a7985"}}},"legend":{"data":["Email","Union Ads","Video Ads","Direct","Search Engine"]},"toolbox":{"feature":{"saveAsImage":[]}},"grid":{"left":"3%","right":"4%","bottom":"3%","containLabel":true},"xAxis":{"type":"category","boundaryGap":false,"data":["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]},"yAxis":{"type":"value"},"series":[{"type":"line","name":"Email","areaStyle":[],"emphasis":{"focus":"series"},"stack":"Total","label":[],"data":[120,132,101,134,90,230,210]},{"type":"line","name":"Union Ads","areaStyle":[],"emphasis":{"focus":"series"},"stack":"Total","label":[],"data":[220,182,191,234,290,330,310]},{"type":"line","name":"Video Ads","areaStyle":[],"emphasis":{"focus":"series"},"stack":"Total","label":[],"data":[150,232,201,154,190,330,410]},{"type":"line","name":"Direct","areaStyle":[],"emphasis":{"focus":"series"},"stack":"Total","label":[],"data":[320,332,301,334,390,330,320]},{"type":"line","name":"Search Engine","areaStyle":[],"emphasis":{"focus":"series"},"stack":"Total","label":{"show":true,"position":"top"},"data":[820,932,901,934,1290,1330,1320]}]},"on":null,"off":null,"dispatch":null,"listen":[],"update":false},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-1fb4450895fe099f74a1">{"x":{"option":{"title":{"text":"Stacked Area Chart"},"tooltip":{"trigger":"axis","axisPointer":{"type":"cross","label":{"backgroundColor":"#6a7985"}}},"legend":{"data":["Email","Union Ads","Video Ads","Direct","Search Engine"]},"toolbox":{"feature":{"saveAsImage":[]}},"grid":{"left":"3%","right":"4%","bottom":"3%","containLabel":true},"xAxis":{"type":"category","boundaryGap":false},"yAxis":{"type":"value"},"series":[{"type":"line","name":"Email","areaStyle":[],"emphasis":{"focus":"series"},"stack":"Total","label":[],"data":[["Mon",120],["Tue",132],["Wed",101],["Thu",134],["Fri",90],["Sat",230],["Sun",210]]},{"type":"line","name":"Union Ads","areaStyle":[],"emphasis":{"focus":"series"},"stack":"Total","label":[],"data":[["Mon",220],["Tue",182],["Wed",191],["Thu",234],["Fri",290],["Sat",330],["Sun",310]]},{"type":"line","name":"Video Ads","areaStyle":[],"emphasis":{"focus":"series"},"stack":"Total","label":[],"data":[["Mon",150],["Tue",232],["Wed",201],["Thu",154],["Fri",190],["Sat",330],["Sun",410]]},{"type":"line","name":"Direct","areaStyle":[],"emphasis":{"focus":"series"},"stack":"Total","label":[],"data":[["Mon",320],["Tue",332],["Wed",301],["Thu",334],["Fri",390],["Sat",330],["Sun",320]]},{"type":"line","name":"Search Engine","areaStyle":[],"emphasis":{"focus":"series"},"stack":"Total","label":{"show":true,"position":"top"},"data":[["Mon",820],["Tue",932],["Wed",901],["Thu",934],["Fri",1290],["Sat",1330],["Sun",1320]]}]},"on":null,"off":null,"dispatch":null,"listen":[],"update":false},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="section level2">
@@ -237,12 +233,12 @@
 <span>  y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">120</span>, <span class="fl">200</span>, <span class="fl">150</span>, <span class="fl">80</span>, <span class="fl">70</span>, <span class="fl">110</span>, <span class="fl">130</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/echartr.html">echartr</a></span><span class="op">(</span>option <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>  xAxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"category"</span>, data <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">x</span><span class="op">)</span>,</span>
+<span>  xAxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"category"</span><span class="op">)</span>,</span>
 <span>  yAxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"value"</span><span class="op">)</span>,</span>
-<span>  series <span class="op">=</span> <span class="fu"><a href="../reference/ec_bar.html">ec_bar</a></span><span class="op">(</span><span class="va">data</span>, y <span class="op">=</span> <span class="va">y</span><span class="op">)</span></span>
+<span>  series <span class="op">=</span> <span class="fu"><a href="../reference/ec_bar.html">ec_bar</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">x</span>, <span class="va">y</span><span class="op">)</span></span>
 <span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="echartr html-widget html-fill-item" id="htmlwidget-10b3b7155e8045a1b2ad" style="width:700px;height:432.632880098888px;"></div>
-<script type="application/json" data-for="htmlwidget-10b3b7155e8045a1b2ad">{"x":{"option":{"xAxis":{"type":"category","data":["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]},"yAxis":{"type":"value"},"series":[{"type":"bar","data":[120,200,150,80,70,110,130]}]},"on":null,"off":null,"dispatch":null,"listen":[],"update":false},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-10b3b7155e8045a1b2ad">{"x":{"option":{"xAxis":{"type":"category"},"yAxis":{"type":"value"},"series":[{"type":"bar","data":[["Mon",120],["Tue",200],["Wed",150],["Thu",80],["Fri",70],["Sat",110],["Sun",130]]}]},"on":null,"off":null,"dispatch":null,"listen":[],"update":false},"evals":[],"jsHooks":[]}</script>
 </div>
 <div class="section level3">
 <h3 id="axis-align-with-tick">Axis Align with Tick<a class="anchor" aria-label="anchor" href="#axis-align-with-tick"></a>
@@ -256,32 +252,23 @@
 <span></span>
 <span><span class="fu"><a href="../reference/echartr.html">echartr</a></span><span class="op">(</span>option <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>  tooltip <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>    trigger <span class="op">=</span> <span class="st">"axis"</span>,</span>
-<span>    axisPointer <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>      type <span class="op">=</span> <span class="st">"shadow"</span></span>
-<span>    <span class="op">)</span></span>
+<span>    trigger <span class="op">=</span> <span class="st">"axis"</span>, axisPointer <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"shadow"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span>,</span>
 <span>  grid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>    left <span class="op">=</span> <span class="st">"3%"</span>,</span>
-<span>    right <span class="op">=</span> <span class="st">"4%"</span>,</span>
-<span>    bottom <span class="op">=</span> <span class="st">"3%"</span>,</span>
-<span>    containLabel <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>    left <span class="op">=</span> <span class="st">"3%"</span>, right <span class="op">=</span> <span class="st">"4%"</span>, bottom <span class="op">=</span> <span class="st">"3%"</span>, containLabel <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span>  <span class="op">)</span>,</span>
 <span>  xAxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>    type <span class="op">=</span> <span class="st">"category"</span>, </span>
-<span>    data <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">x</span>, </span>
-<span>    axisTick <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>      alignWithLabel <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span>    <span class="op">)</span></span>
+<span>    axisTick <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>alignWithLabel <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span>  <span class="op">)</span>,</span>
 <span>  yAxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"value"</span><span class="op">)</span>,</span>
-<span>  series <span class="op">=</span> <span class="fu"><a href="../reference/ec_bar.html">ec_bar</a></span><span class="op">(</span><span class="va">data</span>, y <span class="op">=</span> <span class="va">y</span>, name <span class="op">=</span> <span class="st">"Direct"</span>, barWidth <span class="op">=</span> <span class="st">"60%"</span><span class="op">)</span>,</span>
+<span>  series <span class="op">=</span> <span class="fu"><a href="../reference/ec_bar.html">ec_bar</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">x</span>, <span class="va">y</span>, name <span class="op">=</span> <span class="st">"Direct"</span>, barWidth <span class="op">=</span> <span class="st">"60%"</span><span class="op">)</span>,</span>
 <span>  axisPointer <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>    type <span class="op">=</span> <span class="st">"shadow"</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="echartr html-widget html-fill-item" id="htmlwidget-4018eef1a407a0df6b52" style="width:700px;height:432.632880098888px;"></div>
-<script type="application/json" data-for="htmlwidget-4018eef1a407a0df6b52">{"x":{"option":{"tooltip":{"trigger":"axis","axisPointer":{"type":"shadow"}},"grid":{"left":"3%","right":"4%","bottom":"3%","containLabel":true},"xAxis":{"type":"category","data":["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],"axisTick":{"alignWithLabel":true}},"yAxis":{"type":"value"},"series":[{"type":"bar","name":"Direct","barWidth":"60%","data":[10,52,200,334,390,330,220]}],"axisPointer":{"type":"shadow"}},"on":null,"off":null,"dispatch":null,"listen":[],"update":false},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-4018eef1a407a0df6b52">{"x":{"option":{"tooltip":{"trigger":"axis","axisPointer":{"type":"shadow"}},"grid":{"left":"3%","right":"4%","bottom":"3%","containLabel":true},"xAxis":{"type":"category","axisTick":{"alignWithLabel":true}},"yAxis":{"type":"value"},"series":[{"type":"bar","name":"Direct","barWidth":"60%","data":[["Mon",10],["Tue",52],["Wed",200],["Thu",334],["Fri",390],["Sat",330],["Sun",220]]}],"axisPointer":{"type":"shadow"}},"on":null,"off":null,"dispatch":null,"listen":[],"update":false},"evals":[],"jsHooks":[]}</script>
 </div>
 <div class="section level3">
 <h3 id="bar-with-background">Bar with Background<a class="anchor" aria-label="anchor" href="#bar-with-background"></a>
@@ -294,16 +281,14 @@
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/echartr.html">echartr</a></span><span class="op">(</span>option <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>  xAxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>    type <span class="op">=</span> <span class="st">"category"</span>, data <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">x</span></span>
-<span>  <span class="op">)</span>,</span>
+<span>  xAxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"category"</span><span class="op">)</span>,</span>
 <span>  yAxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"value"</span><span class="op">)</span>,</span>
-<span>  series <span class="op">=</span> <span class="fu"><a href="../reference/ec_bar.html">ec_bar</a></span><span class="op">(</span><span class="va">data</span>, y <span class="op">=</span> <span class="va">y</span>, showBackground <span class="op">=</span> <span class="cn">TRUE</span>, backgroundStyle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>  series <span class="op">=</span> <span class="fu"><a href="../reference/ec_bar.html">ec_bar</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">x</span>, <span class="va">y</span>, showBackground <span class="op">=</span> <span class="cn">TRUE</span>, backgroundStyle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>    color <span class="op">=</span> <span class="st">"rgba(220, 220, 220, 0.8)"</span> <span class="co"># TODO: Handle grDevices::rgb</span></span>
 <span>  <span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="echartr html-widget html-fill-item" id="htmlwidget-5b1b2f4ad92281566982" style="width:700px;height:432.632880098888px;"></div>
-<script type="application/json" data-for="htmlwidget-5b1b2f4ad92281566982">{"x":{"option":{"xAxis":{"type":"category","data":["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]},"yAxis":{"type":"value"},"series":[{"type":"bar","showBackground":true,"backgroundStyle":{"color":"rgba(220, 220, 220, 0.8)"},"data":[120,200,150,80,70,110,130]}]},"on":null,"off":null,"dispatch":null,"listen":[],"update":false},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-5b1b2f4ad92281566982">{"x":{"option":{"xAxis":{"type":"category"},"yAxis":{"type":"value"},"series":[{"type":"bar","showBackground":true,"backgroundStyle":{"color":"rgba(220, 220, 220, 0.8)"},"data":[["Mon",120],["Tue",200],["Wed",150],["Thu",80],["Fri",70],["Sat",110],["Sun",130]]}]},"on":null,"off":null,"dispatch":null,"listen":[],"update":false},"evals":[],"jsHooks":[]}</script>
 </div>
 <div class="section level3">
 <h3 id="bar-label-rotation">Bar Label Rotation<a class="anchor" aria-label="anchor" href="#bar-label-rotation"></a>
@@ -337,13 +322,8 @@
 <span>  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer</a></span><span class="op">(</span><span class="va">Forest</span><span class="op">:</span><span class="va">Wetland</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/echartr.html">echartr</a></span><span class="op">(</span>option <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>  tooltip <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>    trigger <span class="op">=</span> <span class="st">"axis"</span>,</span>
-<span>    axisPointer <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>      type <span class="op">=</span> <span class="st">"shadow"</span></span>
-<span>    <span class="op">)</span></span>
-<span>  <span class="op">)</span>,</span>
-<span>  legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">name</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  tooltip <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>trigger <span class="op">=</span> <span class="st">"axis"</span>, axisPointer <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"shadow"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>show <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>  toolbox <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>    show <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    orient <span class="op">=</span> <span class="st">"vertical"</span>,</span>
@@ -357,18 +337,18 @@
 <span>      saveAsImage <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>show <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span>    <span class="op">)</span></span>
 <span>  <span class="op">)</span>,</span>
-<span>  xAxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"category"</span>, data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">year</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  xAxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"category"</span><span class="op">)</span>,</span>
 <span>  yAxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"value"</span><span class="op">)</span>,</span>
 <span>  series <span class="op">=</span> <span class="fu"><a href="../reference/ec_bar.html">ec_bar</a></span><span class="op">(</span></span>
 <span>    <span class="va">data</span>, </span>
 <span>    label <span class="op">=</span> <span class="va">label_option</span>,</span>
-<span>    y <span class="op">=</span> <span class="va">value</span>, </span>
+<span>    <span class="va">year</span>, <span class="va">value</span>, </span>
 <span>    name <span class="op">=</span> <span class="va">name</span>,</span>
 <span>    barGap <span class="op">=</span> <span class="fl">0L</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="echartr html-widget html-fill-item" id="htmlwidget-25c3e940e6859592f801" style="width:700px;height:432.632880098888px;"></div>
-<script type="application/json" data-for="htmlwidget-25c3e940e6859592f801">{"x":{"option":{"tooltip":{"trigger":"axis","axisPointer":{"type":"shadow"}},"legend":{"data":["Forest","Steppe","Desert","Wetland"]},"toolbox":{"show":true,"orient":"vertical","left":"right","top":"center","feature":{"mark":{"show":true},"dataView":{"show":true,"readOnly":false},"magicType":{"show":true,"type":["line","bar"]},"restore":{"show":true},"saveAsImage":{"show":true}}},"xAxis":{"type":"category","data":["2012","2013","2014","2015","2016"]},"yAxis":{"type":"value"},"series":[{"type":"bar","label":{"show":true,"formatter":"{c}  {name|{a}}","rich":"name: {}","rotate":90,"align":"left","verticalAlign":"middle","position":"insideBottom","distance":15},"name":"Forest","barGap":0,"data":[320,332,301,334,390]},{"type":"bar","label":{"show":true,"formatter":"{c}  {name|{a}}","rich":"name: {}","rotate":90,"align":"left","verticalAlign":"middle","position":"insideBottom","distance":15},"name":"Steppe","barGap":0,"data":[220,182,191,234,290]},{"type":"bar","label":{"show":true,"formatter":"{c}  {name|{a}}","rich":"name: {}","rotate":90,"align":"left","verticalAlign":"middle","position":"insideBottom","distance":15},"name":"Desert","barGap":0,"data":[150,232,201,154,190]},{"type":"bar","label":{"show":true,"formatter":"{c}  {name|{a}}","rich":"name: {}","rotate":90,"align":"left","verticalAlign":"middle","position":"insideBottom","distance":15},"name":"Wetland","barGap":0,"data":[98,77,101,99,40]}]},"on":null,"off":null,"dispatch":null,"listen":[],"update":false},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-25c3e940e6859592f801">{"x":{"option":{"tooltip":{"trigger":"axis","axisPointer":{"type":"shadow"}},"legend":{"show":true},"toolbox":{"show":true,"orient":"vertical","left":"right","top":"center","feature":{"mark":{"show":true},"dataView":{"show":true,"readOnly":false},"magicType":{"show":true,"type":["line","bar"]},"restore":{"show":true},"saveAsImage":{"show":true}}},"xAxis":{"type":"category"},"yAxis":{"type":"value"},"series":[{"type":"bar","label":{"show":true,"formatter":"{c}  {name|{a}}","rich":"name: {}","rotate":90,"align":"left","verticalAlign":"middle","position":"insideBottom","distance":15},"name":"Forest","barGap":0,"data":[["2012",320],["2013",332],["2014",301],["2015",334],["2016",390]]},{"type":"bar","label":{"show":true,"formatter":"{c}  {name|{a}}","rich":"name: {}","rotate":90,"align":"left","verticalAlign":"middle","position":"insideBottom","distance":15},"name":"Steppe","barGap":0,"data":[["2012",220],["2013",182],["2014",191],["2015",234],["2016",290]]},{"type":"bar","label":{"show":true,"formatter":"{c}  {name|{a}}","rich":"name: {}","rotate":90,"align":"left","verticalAlign":"middle","position":"insideBottom","distance":15},"name":"Desert","barGap":0,"data":[["2012",150],["2013",232],["2014",201],["2015",154],["2016",190]]},{"type":"bar","label":{"show":true,"formatter":"{c}  {name|{a}}","rich":"name: {}","rotate":90,"align":"left","verticalAlign":"middle","position":"insideBottom","distance":15},"name":"Wetland","barGap":0,"data":[["2012",98],["2013",77],["2014",101],["2015",99],["2016",40]]}]},"on":null,"off":null,"dispatch":null,"listen":[],"update":false},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="section level2">
@@ -446,7 +426,7 @@
 <span>  <span class="op">)</span>,</span>
 <span>  series <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
 <span>    <span class="fu"><a href="../reference/ec_scatter.html">ec_scatter</a></span><span class="op">(</span><span class="va">data</span>, </span>
-<span>      y <span class="op">=</span> <span class="va">date</span>, </span>
+<span>      <span class="va">date</span>, </span>
 <span>      id <span class="op">=</span> <span class="st">"label"</span>, </span>
 <span>      coordinateSystem <span class="op">=</span> <span class="st">"calendar"</span>, </span>
 <span>      symbolSize <span class="op">=</span> <span class="fl">0</span>,</span>
@@ -462,7 +442,7 @@
 <span>      <span class="op">)</span></span>
 <span>    <span class="op">)</span>,</span>
 <span>    <span class="fu"><a href="../reference/ec_pie.html">ec_pie</a></span><span class="op">(</span><span class="va">data</span>, </span>
-<span>      value <span class="op">=</span> <span class="va">value</span>, </span>
+<span>      <span class="va">value</span>, </span>
 <span>      id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"pie-"</span>, <span class="va">index</span><span class="op">)</span>, </span>
 <span>      center <span class="op">=</span> <span class="va">date</span>, </span>
 <span>      coordinateSystem <span class="op">=</span> <span class="st">"calendar"</span>,</span>
@@ -486,7 +466,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.2.</p>
 </div>
 
     </footer>

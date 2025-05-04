@@ -38,6 +38,7 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-examples" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Examples</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-examples">
 <li><a class="dropdown-item" href="articles/examples.html">All Examples</a></li>
+    <li><a class="dropdown-item" href="articles/examples/heatmap-examples.html">Heatmap</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="reference/">Reference</a></li>
@@ -100,8 +101,8 @@
 <span>                      </span>
 <span>    <span class="co"># Data dimensions and series attributes are provided as expressions that can </span></span>
 <span>    <span class="co"># be evaluated for each row to build multiple series</span></span>
-<span>    x <span class="op">=</span> <span class="va">Petal.Length</span>,</span>
-<span>    y <span class="op">=</span> <span class="va">Petal.Width</span>,</span>
+<span>    <span class="va">Petal.Length</span>, <span class="co"># x</span></span>
+<span>    <span class="va">Petal.Width</span>, <span class="co"># y</span></span>
 <span>    </span>
 <span>    name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">Species</span><span class="op">)</span>,</span>
 <span>    symbol <span class="op">=</span> <span class="kw">if</span> <span class="op">(</span><span class="va">Species</span> <span class="op">==</span> <span class="st">"versicolor"</span><span class="op">)</span> <span class="st">"circle"</span> <span class="kw">else</span> <span class="st">"emptyCircle"</span>,</span>
@@ -147,7 +148,7 @@
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Ashleigh Williams <br><small class="roles"> Author, maintainer </small>  </li>
+<li>Ashleigh Williams <br><small class="roles"> Author, maintainer </small>   </li>
 </ul>
 </div>
 
@@ -167,7 +168,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.2.</p>
 </div>
 
     </footer>
